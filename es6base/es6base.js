@@ -154,9 +154,9 @@ map.forEach((value, key) => {
 });
 map.clear();
 
-// Module
-import { June, Seven } from '../src/module/Yangyang';
-console.log(June, Seven);
+// Module  todo 为什么?
+// import { June, Seven } from '../src/module/Yangyang';
+// console.log(June, Seven);
 
 
 
