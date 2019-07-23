@@ -14,9 +14,11 @@ const obj = [
     ['二合同段七工区', 'bebd122b-9ea4-4d79-a48c-b6cff6d1ddf7', '1471939b-e716-4f3d-b8ee-4bea7667f097'],
     ['二合同段八工区', '5bc9453a-1858-4ab4-9801-939862c36f88', '1471939b-e716-4f3d-b8ee-4bea7667f097'],
     ['1号梁场', 'ddd18457-f22e-42fa-bcee-7b267522b008', '0710ffbd-07f2-4191-ad01-4cd0d27aae88'],
+    ['3号梁场', 'ddd18457-0124-ab45-bcee-7b267522b008', '366906c1-ef4c-4fea-8a2d-0125e7376d11'],
     ['1#梁厂', 'de733fbb-1f44-44d0-bcb1-bc85facc1f3d', 'feaff4a4-114d-4ce6-8ffd-edaa49769941'],
     ['2#梁厂', '551a5fe1-cdb7-4e6a-91cb-505127a5fa01', 'feaff4a4-114d-4ce6-8ffd-edaa49769941'],
     ['一标段', 'ff4a3e27-69f3-4d82-9132-52faad7a4e29', '207fa1a9-160c-4943-a89b-8fa4db0547ce'],
+    ['张拉压浆机', 'ff4a3e27-69f3-0011-2233-52faad7a4e29', '551a5fe1-cdb7-4e6a-91cb-505127a5fa01'],
     ['二标段', '1471939b-e716-4f3d-b8ee-4bea7667f097', '207fa1a9-160c-4943-a89b-8fa4db0547ce']
 ];
 const objStr = [
@@ -56,7 +58,8 @@ const table2=[
     });*/
     //f(objStr);
     //compbine();
-   jointDropTree(obj);
+    jointDropTree(obj);
+    // func();
 }());
 // ES5 学习
 //console.log('hi js');
@@ -64,79 +67,103 @@ const table2=[
 // JSON串拼接方法
 function jointDropTree(datas) {
     if (datas) {
-        // 存放标段数据
-        let contractData = [];
-        // 存放工区数据
-        let areaData = [];
-        // 存放梁场数据
-        let siteData = [];
-        // 存放设备数据
-        let equipData = [];
+        // 存放标段数据 / 存放工区数据 / 存放梁场数据 / 存放设备数据
+        let contractData = [], areaData = [];
         // 存放TenderName,TenderId
         let mapBd = new Map();
-        let mapGq1 = new Map();
-        let mapGq2 = new Map();
+        let mapGq = new Map();
         let mapCd = new Map();
         let mapSb = new Map();
-        // 存放TenderId
-        //let arrTen = [];
-        // 存放ParentId
-        //let arrPar = [];
+
+        let bdSet = new Set();
+        let gqSet = new Set();
+        let cdSet = new Map();
+        let sbSet = new Map();
+
         let map = new Map();
         for (let i = 0; i < datas.length; i++) {
             let text = datas[i][0];
             let TenderId = datas[i][1];
             let ParentId = datas[i][2];
-            /*arrTen.push(TenderId);
-            arrPar.push(ParentId);*/
 
-            map.set(text, TenderId);
+            map.set(text, ParentId);
             if (!isEmpty(text) && text.indexOf("标段") > 0) {
                 mapBd.set(text, TenderId)
             } else if (!isEmpty(text) && text.indexOf("工区") > 0) {
-                mapGq1.set(text, TenderId);
-                mapGq2.set(text, ParentId);
+                mapGq.set(text, TenderId);
             } else if (!isEmpty(text) && (text.indexOf("梁") > 0) || (text.indexOf("拌合") > 0)) {
-                mapCd.set(text, ParentId);
+                mapCd.set(text, TenderId);
             } else {
-                mapSb.set(text, ParentId);
+                mapSb.set(text, TenderId);
             }
         }
+
         // 标段ID值对应工区标段父ID值
-
-        // 遍历map
+        // 遍历标段map
         if (mapBd) {
-            mapBd.forEach(function (value, key, map) {
-                if (mapGq2) {
-                    let flag = false;
-                    mapGq2.forEach(function (valueGq2, keyGq2, mapGq2) {
-                        if (value === valueGq2) {
-                            console.log(key + ' : ' + keyGq2);
-                            flag = true;
-                        }
-                    });
-                    mapGq1.forEach(function (valueGq1, keyGq1, mapGq1) {
-                        if (mapCd) {
-                            mapCd.forEach(function (valueCd, keyCd, mapCd) {
-                                if (valueCd === valueGq1) {
-                                    console.log(keyCd + ' : ' + keyGq1);
-
-                                }
-                            })
-                        }
-                    });
-                }
+            mapBd.forEach(function (valueBd, keyBd, mapBd) {
+                map.forEach(function (value, key, map) {
+                    if (valueBd === value) {
+                        //console.log(keyBd + ' : ' + key);
+                        bdSet.add(keyBd);
+                        gqSet.add(key);
+                    }
+                });
             });
         }
-        /*if (contractData.length !== 0) {
+
+        // 遍历工区map
+        if (mapGq) {
+            let jsonGq = '';
+            mapGq.forEach(function (valueGq, keyGq, mapGq) {
+                map.forEach(function (value, key, map) {
+                    if (value === valueGq) {
+                        //console.log(key + ' <> ' + keyGq);
+                        if (cdSet.has(keyGq)) {
+                            jsonGq += `{text:'${key}'},`;
+                            cdSet.set(keyGq, jsonGq);
+                        } else {
+                            jsonGq = `{text:'${key}'},`;
+                            cdSet.set(keyGq, jsonGq);
+                        }
+                    }
+                })
+            });
+        }
+
+        // 遍历场地(梁场、拌合站等等)map
+        if (mapCd) {
+            let jsonCd = '';
+            mapCd.forEach(function (valueCd, keyCd, mapCd) {
+                map.forEach(function (value, key, map) {
+                    if (valueCd === value) {
+                        //console.log(key + ' -- ' + keyCd);
+                        if (sbSet.has(keyCd)) {
+                            jsonCd += `{text:'${key}'},`;
+                            sbSet.set(keyCd, jsonCd);
+                        } else {
+                            jsonCd = `{text:'${key}'},`;
+                            sbSet.set(keyCd, jsonCd);
+                        }
+                    }
+                })
+            });
+        }
+
+        // 从内往外拼接JSON字符串
+        let jsonBd = '';
+        if (bdSet) {
             let defaultData = "[";
-            let str = "";
+            let str = '';
             let parentData = [];
-            let childData = "";
+            let childData = '';
+            // Set转Array
+            contractData = Array.from(bdSet);
+            areaData = Array.from(gqSet);
             for (let i = 0; i < contractData.length; i++) {
                 let a = contractData[i];
                 parentData[i] = `{text: '${a}'`;
-                if (areaData.length !== 0) {
+                if (areaData.length > 0) {
                     for (let j = 0; j < areaData.length; j++) {
                         if (a.substring(0, a.indexOf('标')) === areaData[j].substring(0, areaData[j].indexOf('合'))) {
                             childData += `{text: '${areaData[j]}'},`;
@@ -149,12 +176,36 @@ function jointDropTree(datas) {
                     str += "},"
                 }
             }
-            let resultStr = defaultData + str.substring(0, str.length - 1) + "]";
-            //console.log('result = ' + resultStr);
-            return resultStr;
-        }*/
+            jsonBd = defaultData + str.substring(0, str.length - 1) + "]";
+            // return jsonBd;
+        }
+
+        // 汇总JSON字符串
+        console.log(cdSet);
+        console.log(sbSet);
+        console.log('jsonBd = ' + jsonBd);
+        // 循环替换字符串
+        let resultStr = String(jsonBd);
+        let strs = [];
+        cdSet.forEach(function (val, key, map) {
+            if (resultStr.indexOf(key) !== -1) {
+                strs = resultStr.split(`\'${key}\'`);
+                let vala = val.substring(0, val.length - 1);
+                resultStr = strs[0] + `'${key}',nodes:[${vala}]` + strs[1];
+                strs = [];
+            }
+        });
+        sbSet.forEach(function (val, key, map) {
+            if (resultStr.indexOf(key) !== -1) {
+                strs = resultStr.split(`\'${key}\'`);
+                let vala = val.substring(0, val.length - 1);
+                resultStr = strs[0] + `'${key}',nodes:[${vala}]` + strs[1];
+                strs = [];
+            }
+        });
+        console.log('result json : ' + resultStr);
     } else {
-        return "[{text:'该用户暂未挂载合同段'}]";
+        return "[{text:'数据为空'}]";
     }
 }
 
@@ -323,4 +374,20 @@ function compbine() {
     });
     console.log(table1);
 }
+// 不重复保存数据
+Array.prototype.pushNoRepeat = function () {
+    for (let i = 0; i < arguments.length; i++) {
+        let ele = arguments[i];
+        if (this.indexOf(ele) === -1) {
+            this.push(ele);
+        }
+    }
+};
 
+function func() {
+    let insertStr = (soure,start, newStr) => {
+        return soure.slice(0, start) + newStr + soure.slice(start)
+    };
+    let testStr = "蚂蚁部落";
+    console.log(insertStr(testStr,1,"奋斗"));
+}

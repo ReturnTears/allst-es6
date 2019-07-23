@@ -9,13 +9,40 @@
         // DOM对象
         document.write('Hello a first js program !');
         // 打印到控制台
-        console.log('hello js');
+        // console.log('hello js');
 
     </script>
     <!-- 外部引入js文件后该标签就不能继续编写js代码了 src属性 -->
     <script type="text/javascript" charset="UTF-8" defer="defer" src="es5-base.js"></script>
 </head>
 <body>
-
+    <div>
+        // 拼接JSON字符串
+        if (contractData.length !== 0) {
+        let defaultData = "[";
+        let str = "";
+        let parentData = [];
+        let childData = "";
+        for (let i = 0; i < contractData.length; i++) {
+        let a = contractData[i];
+        parentData[i] = `{text: '${a}'`;
+        if (areaData.length !== 0) {
+        for (let j = 0; j < areaData.length; j++) {
+        if (a.substring(0, a.indexOf('标')) === areaData[j].substring(0, areaData[j].indexOf('合'))) {
+        childData += `{text: '${areaData[j]}'},`;
+        }
+        }
+        childData = childData.substring(0, childData.length - 1);
+        str += childData.length > 0 ? parentData[i] + `,nodes:[${childData}]},` : parentData[i] + ",";
+        childData = "";
+        } else {
+        str += "},"
+        }
+        }
+        let resultStr = defaultData + str.substring(0, str.length - 1) + "]";
+        //console.log('result = ' + resultStr);
+        return resultStr;
+        }
+    </div>
 </body>
 </html>
