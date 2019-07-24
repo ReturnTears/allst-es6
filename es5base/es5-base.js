@@ -99,8 +99,15 @@ function jointDropTree(datas) {
         }
 
         // 标段ID值对应工区标段父ID值
+        // 当只有标段的时候
+        if (mapBd.size > 0 && mapGq.size === 0) {
+            mapBd.forEach(function (valueBd, keyBd, mapBd) {
+                bdSet.add(keyBd);
+            });
+        }
+
         // 遍历标段map
-        if (mapBd) {
+        if (mapBd.size > 0 && mapGq.size !== 0) {
             mapBd.forEach(function (valueBd, keyBd, mapBd) {
                 map.forEach(function (value, key, map) {
                     if (valueBd === value) {
@@ -113,7 +120,7 @@ function jointDropTree(datas) {
         }
 
         // 遍历工区map
-        if (mapGq) {
+        if (mapGq.size > 0) {
             let jsonGq = '';
             mapGq.forEach(function (valueGq, keyGq, mapGq) {
                 map.forEach(function (value, key, map) {
@@ -132,7 +139,7 @@ function jointDropTree(datas) {
         }
 
         // 遍历场地(梁场、拌合站等等)map
-        if (mapCd) {
+        if (mapCd.size > 0) {
             let jsonCd = '';
             mapCd.forEach(function (valueCd, keyCd, mapCd) {
                 map.forEach(function (value, key, map) {

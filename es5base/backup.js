@@ -61,10 +61,10 @@ function f() {
                         }
                     }
                     childData = childData.substring(0, childData.length - 1);
-                    str += childData.length > 0 ? parentData[i] + `,nodes:[${childData}]},` : parentData[i] + ",";
+                    str += childData.length > 0 ? parentData[i] + `,nodes:[${childData}]},` : parentData[i] + "},";
                     childData = "";
                 } else {
-                    str += "},"
+                    str += parentData[i] + "},";
                 }
             }
             return defaultData + str.substring(0, str.length - 1) + "]";
