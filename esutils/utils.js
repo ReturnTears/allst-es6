@@ -45,6 +45,109 @@ const fibonacci = n =>
 const unique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
 // Flatten数组, 使用reduce（）来获取数组中的所有元素，并使用concat（）来使它们flatten。
 const flatten = arr => arr.reduce((a, v) => a.concat(v), []);
+// 从数组中获取最大值, 使用Math.max（）与spread运算符（…）结合得到数组中的最大值。
+const arrayMax = arr => Math.max(...arr);
+// 从数组中获取最小值, 使用Math.min（）与spread运算符（…）结合得到数组中的最小值。
+const arrayMin = arr => Math.min(...arr);
+// 获取滚动位置, 如果已定义，请使用pageXOffset和pageYOffset，否则使用scrollLeft和scrollTop，可以省略el来使用window的默认值。
+const getScrollPos = (el = window) =>
+    ({
+        x: (el.pageXOffset !== undefined) ? el.pageXOffset : el.scrollLeft,
+        y: (el.pageYOffset !== undefined) ? el.pageYOffset : el.scrollTop
+    });
+// 最大公约数(GCD): 使用递归。基本情况是当y等于0时。在这种情况下，返回x。否则，返回y的GCD和x / y的其余部分。
+const gcd = (x, y) => !y ? x : gcd(y, x % y);
+// Head of list
+const head = arr => arr[0];
+// list初始化, 返回arr.slice（0，-1）
+const initial = arr => arr.slice(0, -1);
+// 用****range****初始化数组, 使用Array（end-start）创建所需长度的数组，使用map（）来填充范围中的所需值，可以省略start使用默认值0
+const initializeRange = (end, start = 0) =>
+    Array.apply(null, Array(end - start)).map((v, i) => i + start);
+// 用值初始化数组, 使用Array（n）创建所需长度的数组，fill(v)以填充所需的值，可以忽略value使用默认值0。
+const initializeArray = (n, v = 0) => Array(n).fill(v);
+// 列表的最后, 返回arr.slice（-1）[0]
+const last = arr => arr.slice(-1)[0];
+// 测试功能所花费的时间, 使用performance.now（）获取函数的开始和结束时间，console.log（）所花费的时间。第一个参数是函数名，随后的参数传递给函数。
+const timeTaken = (func, ...args) => {
+   var t0 = performance.now(), r = func(...args);
+   console.log(performance.now() - t0);
+   return r;
+};
+// 来自键值对的对象, 使用Array.reduce（）来创建和组合键值对。
+const objectFromPairs = arr => arr.reduce((a, v) => (a[v[0]] = v[1], a), {});
+// 管道, 使用Array.reduce（）通过函数传递值。
+const pipe = (...funcs) => arg => funcs.reduce((acc, fun) => fun(acc), arg);
+// Powerset, 使用reduce（）与map（）结合来遍历元素，并将其组合成包含所有组合的数组。
+const Powerset = arr => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
+// 范围内的随机整数, 使用Math.random（）生成一个随机数并将其映射到所需的范围，使用Math.floor（）使其成为一个整数。
+const randomIntegerInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+// 范围内的随机数
+const randomInRange = (min, max) => Math.random() * (max - min) + min;
+// 随机化数组的顺序, 使用sort（）重新排序元素，利用Math.random（）来随机排序。
+const randomizeOrder = arr => arr.sort((a, b) => Math.random() >= 0.5 ? -1 : 1);
+// 重定向到URL, 使用window.location.href或window.location.replace（）重定向到url。传递第二个参数来模拟链接点击（true – default）或HTTP重定向（false）。
+const redirect = (url, asLink = true) =>
+    asLink ? window.location.href = url : window.location.replace(url);
+// 反转一个字符串, 使用数组解构和Array.reverse（）来颠倒字符串中的字符顺序。合并字符以使用join(”)获取字符串。
+const reverseString = str => [...str].reverse().join('');
+// RGB到十六进制, 使用按位左移运算符（<<）和toString（16），然后padStart（6，“0”）将给定的RGB参数转换为十六进制字符串以获得6位十六进制值。
+const rgbToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
+// 滚动到顶部, 使用document.documentElement.scrollTop或document.body.scrollTop获取到顶部的距离。
+// 从顶部滚动一小部分距离。使用window.requestAnimationFrame（）来滚动。
+const scrollToTop = _ => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 8);
+    }
+};
+// 随机数组值, 使用Array.map（）和Math.random（）创建一个随机值的数组。使用Array.sort（）根据随机值对原始数组的元素进行排序。
+const shuffle = arr => {
+  let r = arr.map(Math.random);
+  return arr.sort((a, b) => r[a] - r[b]);
+};
+// 数组之间的相似性, 使用filter（）移除不是values的一部分值，使用includes（）确定。
+const similarity = (arr, v) => arr.filter(a => v.includes(a));
+// 按字符串排序（按字母顺序排列）, 使用split（”）分割字符串，sort（）使用localeCompare（），使用join（”）重新组合。
+const sortCharactersInString = str => str.split('').sort((a, b) => a.localeCompare(b)).join('');
+// 数组总和, 使用reduce（）将每个值添加到累加器，初始化值为0。
+const sum = arr => arr.reduce((acc, val) => acc + val, 0);
+// 交换两个变量的值, 使用数组解构来交换两个变量之间的值
+//[y, x] = [x, y];
+// 列表的tail, 返回arr.slice(1)
+const tail = arr => arr.slice(1);
+// 数组唯一值, 使用ES6 Set和… rest操作符去掉所有重复值。
+const uni = arr => [...new Set(arr)];
+// URL参数, 使用match() 与适当的正则表达式来获得所有键值对，适当的map() 。使用Object.assign（）和spread运算符（…）将所有键值对组合到一个对象中，将location.search作为参数传递给当前url。
+const getUrlParams = url =>
+    Object.assign(...url.match(/([^?=&]+)(=([^&]*))?/g).map(m => {[f, v] = m.split('='); return {[f]: v}}));
+// UUID生成器
+const uuid = _ =>
+    ([1e7] +- 1e3 +- 4e3 +- 8e3 +- 1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+// 验证数字, 使用！isNaN和parseFloat（）来检查参数是否是一个数字，使用isFinite（）来检查数字是否是有限的。
+const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
