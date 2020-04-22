@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回调函数的分类</title>
+</head>
+<body>
+    <div>
+        <span>回调函数的分类~</span>
+    </div>
+    <script>
+        const arr = [1, 4, 2, 7, 9];
+        arr.forEach(item => {   // 遍历回调， 同步回调函数
+            console.log(item);
+        });
+        console.log('foreach ~ ');
+        console.log('---------------------');
+        setTimeout(() => {  // 异步回调函数，会放入队列中将来执行
+            console.log('timeout callback~')
+        }, 0);
+        console.log('setTimeout ~');
+    </script>
+</body>
+</html>
