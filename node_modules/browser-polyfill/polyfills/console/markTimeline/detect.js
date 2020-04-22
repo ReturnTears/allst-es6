@@ -1,1 +1,0 @@
-'markTimeline' in this.console

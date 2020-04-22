@@ -1,1 +1,0 @@
-'timelineEnd' in this.console
