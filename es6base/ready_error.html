@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错误</title>
+</head>
+<body>
+    <script>
+        try {
+            console.log(a); // referenceError, 如果不捕获异常下面的代码是不能执行的
+        } catch (error) {
+            console.log(error.message);
+            console.log(error.stack);
+        }
+
+        function something() {
+            if (Date.now() % 2 === 1) {
+                console.log('当前时间为奇数， 可以执行任务');
+            } else {
+                throw new Error('当前时间为偶数， 不能执行任务')
+            }
+        }
+        try {
+            something();
+        } catch (error) {
+            alert(error.message);
+        }
+
+        let b;
+        console.log(b.name);    // TypeError
+        b.name();       // TypeError
+    </script>
+</body>
+</html>

@@ -11,7 +11,19 @@
 
 异步回调：不会立即执行，会放入回调队列中将来执行
         eg：定时器回调 / ajax回调 / Promise的成功|失败的回调
-
+3、错误error
+错误的类型
+Error：所有错误的父类型
+ReferenceError：引用的变量不存在
+TypeError：数据类型不正确的错误
+RangError：数据值不在运行的范围内
+SyntaxError：语法错误
+错误处理
+捕获错误：try ... catch 
+抛出错误：throw error
+错误对象
+message属性：错误相关信息
+stack属性：函数调用栈记录信息
 
 
 
