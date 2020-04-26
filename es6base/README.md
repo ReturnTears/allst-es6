@@ -25,11 +25,24 @@ SyntaxError：语法错误
 message属性：错误相关信息
 stack属性：函数调用栈记录信息
 
+二、promise的理解和使用
+promise：译文，承诺、许诺、允诺
+1、promise是什么?
+抽象的表达：promise是JS中进行异步编程的新的解决方案
+具体的表达：语法上：promise是一个构造函数。功能上：promise对象用来封装一个异步操作并可以获取其结果。
+2、promise的状态
+pending：译文：未决定的；行将发生的
+resolved: 译文：下定决心的，坚决的
+rejected：译文：拒绝，驳回；不同意
+初始值是pending
+pending 变为 resolved
+pending 变为 rejected   
+说明：只有这2种，且一个promise对象只能改变一次，无论变为成功还是失败都会有一个结果数据，成功的结果数据一般为value，失败的结果数据一般为reason。
 
 
 ```
 
-VS Code快捷方式
+## VS Code快捷方式
 ```text
 html:5 + tab 在html文件中生成HTML5的模板文件
 
