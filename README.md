@@ -13,6 +13,14 @@ var声明与变量提升
 
 ```
 
+## this指向
+``` text
+事件调用环境：谁触发事件，函数里面的this指向的就是谁.
+全局环境：this指向 window 
+node环境：this指向module.exports
+函数内部：
+```
+
 ## JavaScript 作用域和闭包
  ***
 ### 作用域是什么

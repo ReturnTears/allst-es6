@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向</title>
+    <style>
+        .box1, .box2 {
+            width: 100px;
+            height: 100px;
+            background: #ab01ab;
+            position: relative;
+            left: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+        let box1 = document.querySelector('.box1');
+        let box2 = document.querySelector('.box2');
+        // 事件调用函数
+        box1.onclick = move;
+        box2.onclick = move;
+        function move() {
+            this.style.left = '400px';
+        }
+        console.log(this);// 浏览器运行环境的全局环境：window
+
+        function move_t() {
+            console.log(this)
+        }
+        // 直接调用
+        move_t(); //非strict模式下：Window | strict模式下 undefined
+        // 等价于
+        window.move_t();
+        var abc = 10;   // 变量abc也是挂在window下的
+    </script>
+</body>
+</html>
