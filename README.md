@@ -23,7 +23,9 @@ node环境：this指向module.exports
         函数被多层对象包含，如果函数被最外层对象调用，this指向的也只是它上一级的对象
         构造函数中的this指向的是实例对象
         如果构造函数中有return， 如果return的值是对象，则this指向返回的对象，如果不是对象，则this指向保持原来的规则，在这里null比较特殊
-箭头函数：
+箭头函数：箭头函数本身是没有this和arguments的， 在箭头函数中引用this实际上调用的是定义在上一层的this
+
+修改this指向：
 ```
 
 ## JavaScript 作用域和闭包
