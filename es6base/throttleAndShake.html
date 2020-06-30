@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流与防抖</title>
+    <style>
+        .box {
+            height: 200px;
+            background: #0A8CD2;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector(".box");
+        var testDebounce = debounce(move, 1000);
+        box.onmousemove = testDebounce;
+        
+        function move(ev) {
+            this.innerHTML = ev.clientX + ',' + ev.clientY;
+        }
+        // 节流函数
+        function debounce(fn, wait) {
+            let timer = null;
+            return function() {
+                var agrs = arguments;
+                var now = !timer;
+                timer & clearTimeout(timer);
+                timer = setTimeout(() => {
+                    timer = null;
+                }, wait);
+                if (now) {
+                    fn.apply(this, agrs);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
