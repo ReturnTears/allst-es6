@@ -104,3 +104,16 @@ node环境：this指向module.exports
     
 ### Important
     ES5README.md文档中记录了ES5的详细知识点
+
+
+## ES6新特性
+```text
+VS Code中直接运行js文件命令：node xxx.js文件
+
+for-of可以遍历数组，类数组对象、字符串，集合(Map和Set对象)...
+解构(destructuring):
+Map:    
+Set:    Set 对象可以自动排除重复项
+        基于数组创建对象： let s = new Set(words);//words数组对象
+
+```
