@@ -132,6 +132,13 @@ arrayLength一个范围在 0 到 232的-1次方 之间的整数，此时将返�
 访问数组元素：
 JavaScript 数组的索引是从0开始的，第一个元素的索引为0，最后一个元素的索引等于该数组的长度减1
 如果对象的属性名称是保留字（！），那么就只能通过字符串的形式用方括号来访问
+length 和数字下标之间的关系:
+JavaScript 数组的 length属性和其数字下标之间有着紧密的联系。数组内置的几个方法（例如 join、slice、indexOf 等）都会考虑length的值。另外还有一些方法（例如 push、splice 等）还会改变length的值。
+正则匹配结果所返回的数组：
+使用正则表达式匹配字符串可以得到一个数组。这个数组中包含本次匹配的相关信息和匹配结果。RegExp.exec、String.match、String.replace 都会返回这样的数组。
+属性：
+Array 构造函数的 length 属性，其值为1（注意该属性为静态属性，不是数组实例的 length 属性）
+
 ```
 
 vs code支持 es6, node.js 语法提示: cnpm install --save-dev @types/node

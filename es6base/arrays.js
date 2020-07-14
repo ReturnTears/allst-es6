@@ -52,4 +52,18 @@ var promise = {
   'var'  : 'text',
   'array': [1, 2, 3, 4]
 };
-console.log(promise['var']);
+// console.log(promise['var']);
+// 正则匹配结果所返回的数组
+var myRe = /d(b+)(d)/i;
+var myArray = myRe.exec('cdbBdbsbz');
+// console.log(myArray);
+// 属性
+// console.log(Array.length);
+// 属性
+let set = new Set();
+set.add('a');
+set.add('b');
+set.add('c');
+var setArr = Array.from(set);
+console.log(setArr);
+console.log(Array.isArray(setArr));
