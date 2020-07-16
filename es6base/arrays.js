@@ -6,7 +6,7 @@ var last = color[color.length - 1];
 // console.log(first, last);
 // 遍历数组
 color.forEach(function(item, index, array) {
-    // console.log(item, index);
+// console.log(item, index);
 });
 // 添加元素到数组的末尾
 var newLength = color.push('Blue');
@@ -28,10 +28,10 @@ var removeEle = color.splice(pos, 1);
 // console.log(color);
 // 从一个索引位置删除多个元素
 var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot', 'xx'];
-// console.log(vegetables); 
+// console.log(vegetables);
 var removeItem = vegetables.splice(1, 2);
-// console.log(vegetables); 
-// console.log(removeItem); 
+// console.log(vegetables);
+// console.log(removeItem);
 // 复制一个数组
 var shallowCopy = vegetables.slice();
 // console.log(shallowCopy);
@@ -49,8 +49,8 @@ var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
 //console.log(years['2'] != years['02']);
 // 如果对象的属性名称是保留字（！），那么就只能通过字符串的形式用方括号来访问
 var promise = {
-  'var'  : 'text',
-  'array': [1, 2, 3, 4]
+'var' : 'text',
+'array': [1, 2, 3, 4]
 };
 // console.log(promise['var']);
 // 正则匹配结果所返回的数组
@@ -65,5 +65,33 @@ set.add('a');
 set.add('b');
 set.add('c');
 var setArr = Array.from(set);
-console.log(setArr);
-console.log(Array.isArray(setArr));
+// console.log(setArr);
+// console.log(Array.isArray(setArr));
+
+// for...of
+var ofArr = ['H', 'E', 'L', 'L', 'O'];
+var eArr = ofArr[Symbol.iterator]();
+// console.log(eArr.next().value);
+for (let letter of eArr) {
+  //console.log(letter);
+}
+
+// concat
+var arr1 = ['a', 'b', 'c'];
+var arr2 = ['d', 'e', 'f'];
+var arr3 = ['g', 'h', 'i'];
+var arr4 = arr1.concat(arr2);
+//console.log(arr3);
+var arr5 = arr1.concat(arr2, arr3);
+//console.log(arr5);
+// 合并嵌套数组
+var num1 = [[1]];
+var num2 = [2, [3]];
+var nums = num1.concat(num2);
+// console.log(nums);
+num1[0].push(5);
+// console.log(nums);
+
+// copyWithin
+var cArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+console.log(cArr.copyWithin(2, 3));
