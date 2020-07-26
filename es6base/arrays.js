@@ -95,3 +95,8 @@ num1[0].push(5);
 // copyWithin
 var cArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 console.log(cArr.copyWithin(2, 3));
+
+// entries
+var ena = ['a', 'b', 'c'];
+var iterator = ena.entries();
+console.log(iterator.next().value)
