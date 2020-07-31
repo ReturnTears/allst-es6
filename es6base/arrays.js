@@ -94,9 +94,36 @@ num1[0].push(5);
 
 // copyWithin
 var cArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-console.log(cArr.copyWithin(2, 3));
+// console.log(cArr.copyWithin(2, 3));
 
 // entries
 var ena = ['a', 'b', 'c'];
 var iterator = ena.entries();
-console.log(iterator.next().value)
+// console.log(iterator.next().value)
+
+// every
+function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+// console.log([12,7,8,9,11].every(isBigEnough));
+// console.log([12,17,18,19,11].every(isBigEnough));
+// Using arrow functions
+// console.log([12,7,8,9,11].every(x => x >= 10));
+// console.log([12,17,18,19,11].every(x => x >= 10));
+
+// fill
+var numbers = new Array(5);
+// numbers.fill(1);
+// numbers.fill(1, 2);
+numbers.fill(1, 2, 3);
+// console.log(numbers);
+// console.log([1, 2, 3].fill(4, 1, 1));
+
+// filter
+var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+var longWords = words.filter(function(word){
+  return word.length > 6;
+});
+var longWords2 = words.filter(w => w.length > 7);
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+console.log(filtered);
