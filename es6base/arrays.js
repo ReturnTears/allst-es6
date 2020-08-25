@@ -126,4 +126,44 @@ var longWords = words.filter(function(word){
 });
 var longWords2 = words.filter(w => w.length > 7);
 var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
-console.log(filtered);
+// console.log(filtered);
+
+// filter
+var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+var longWords = words.filter(function(word){
+  return word.length > 6;
+});
+// console.log(longWords);
+var longWords2 = words.filter(word => word.length > 6);
+// console.log(longWords2);
+
+function isBigEnough(value) {
+  return value >= 10;
+}
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// console.log(filtered);
+var jsonArr = [
+  { id: 15 },
+  { id: -1 },
+  { id: 0 },
+  { id: 3 },
+  { id: 12.2 },
+  { },
+  { id: null },
+  { id: NaN },
+  { id: 'undefined' }
+];
+var invalidEntries = 0;
+function isNumber(obj) {
+  return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);
+}
+function filterByID(item) {
+  if (isNumber(item.id)) {
+    return true;
+  } 
+  invalidEntries++;
+  return false; 
+}
+var arrByID = jsonArr.filter(filterByID);
+console.log('Filtered Array\n', arrByID);
+console.log('Number of Invalid Entries = ', invalidEntries); 
