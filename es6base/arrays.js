@@ -165,5 +165,18 @@ function filterByID(item) {
   return false; 
 }
 var arrByID = jsonArr.filter(filterByID);
-console.log('Filtered Array\n', arrByID);
-console.log('Number of Invalid Entries = ', invalidEntries); 
+//console.log('Filtered Array\n', arrByID);
+//console.log('Number of Invalid Entries = ', invalidEntries); 
+var fruits_eight = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+function filterItems(query) {
+  return fruits_eight.filter(function(el) {
+      return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  })
+}
+const filterItems2 = (query) => {
+  return fruits_eight.filter((el) =>
+    el.toLowerCase().indexOf(query.toLowerCase()) > -1
+  );
+}
+console.log(filterItems('ap'));
+console.log(filterItems2('an'));
