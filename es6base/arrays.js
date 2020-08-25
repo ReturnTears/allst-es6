@@ -178,5 +178,34 @@ const filterItems2 = (query) => {
     el.toLowerCase().indexOf(query.toLowerCase()) > -1
   );
 }
-console.log(filterItems('ap'));
-console.log(filterItems2('an'));
+// console.log(filterItems('ap'));
+// console.log(filterItems2('an'));
+
+// find 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回undefined
+// console.log([12, 5, 8, 130, 44].find(isBigEnough));
+let myEleIndex = [12, 5, 8, 130, 44].indexOf(8);
+// console.log(myEleIndex);
+// console.log([12, 5, 8, 130, 44].includes(8));
+// 用对象的属性查找数组里的对象
+var inventory = [
+    {name: 'apples', quantity: 2},
+    {name: 'bananas', quantity: 0},
+    {name: 'cherries', quantity: 5}
+];
+function findCherries(fruit) { 
+    return fruit.name === 'cherries';
+}
+console.log(inventory.find(findCherries));
+// 寻找数组中的质数
+function isPrime(element, index, array) {
+  var start = 2;
+  while (start <= Math.sqrt(element)) {
+    if (element % start++ < 1) {
+      return false;
+    }
+  }
+  return element > 1;
+}
+console.log([4, 6, 8, 12].find(isPrime));
+console.log([4, 5, 8, 12].find(isPrime));
+console.log(Math.sqrt(6));
