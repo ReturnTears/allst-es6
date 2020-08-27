@@ -195,7 +195,7 @@ var inventory = [
 function findCherries(fruit) { 
     return fruit.name === 'cherries';
 }
-console.log(inventory.find(findCherries));
+// console.log(inventory.find(findCherries));
 // 寻找数组中的质数
 function isPrime(element, index, array) {
   var start = 2;
@@ -206,6 +206,15 @@ function isPrime(element, index, array) {
   }
   return element > 1;
 }
-console.log([4, 6, 8, 12].find(isPrime));
-console.log([4, 5, 8, 12].find(isPrime));
-console.log(Math.sqrt(6));
+// console.log([4, 6, 8, 12].find(isPrime));
+// console.log([4, 5, 8, 12].find(isPrime));
+// console.log(Math.sqrt(6));
+
+// findIndex 方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1。
+function isBigEnoughById(element) {
+  return element >= 20;
+}
+let myArr = [12, 7, 25, 22, 30];
+let condIndex = myArr.findIndex(isBigEnoughById);
+console.log(condIndex); // 2
+console.log(myArr.findIndex(isPrime));  // 1 查询数组中首个质数元素的索引
