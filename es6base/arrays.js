@@ -273,7 +273,7 @@ let arrowArr = Array.from([1, 2, 3], x => x + x); // 使用箭头函数和 Array
 // indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
 // arr.indexOf(searchElement[, fromIndex])
 var ioArray = [2, 9, 9, 9];
-console.log(ioArray.indexOf(9, 2));
+//console.log(ioArray.indexOf(9, 2));
 // 找出指定元素出现的所有位置
 var indices = [];
 var ioArrays = ['a', 'b', 'a', 'c', 'a', 'd'];
@@ -283,5 +283,17 @@ while (idx != -1) {
   indices.push(idx);
   idx = ioArrays.indexOf(element, idx + 1);
 }
-console.log(indices);
+//console.log(indices);
 
+// Array.isArray(obj) 用于确定传递的值是否是一个Array。
+//console.log(Array.isArray([]));
+//console.log(Array.isArray([1]));
+//console.log(Array.isArray(new Array()));
+//console.log(Array.isArray(Array.prototype));
+
+// join()方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。
+var ajoin = ['Wind', 'Rain', 'Fire'];
+let defjoin = ajoin.join();
+console.log(defjoin);
+let mydefjoin = ajoin.join('-');
+console.log(mydefjoin);
