@@ -222,7 +222,7 @@ let condIndex = myArr.findIndex(isBigEnoughById);
 // forEach 方法对数组的每个元素执行一次提供的函数。
 let feArr = ['a', 'b', 'c', 'd'];
 feArr.forEach(function(element) {
-  console.log(element);
+  //console.log(element);
 });
 
 function Counter() {
@@ -237,5 +237,23 @@ Counter.prototype.add = function(array) {
 };
 var obj = new Counter();
 obj.add([2,5,6,7]);
-console.log(obj.count);
-console.log(obj.sum);
+//console.log(obj.count);
+//console.log(obj.sum);
+
+// from方法从一个类似数组或可迭代对象中创建一个新的数组实例
+const bar = ["a", "b", "c", "d"];
+let arrBar = Array.from(bar);
+//console.log(arrBar);
+let fooArr = Array.from('fooooo'); // 从字符串获得数组
+//console.log(fooArr);
+var setArray = new Set(['Linux', 'window', 101]); // 从集合中获得数组
+//console.log(Array.from(setArray));
+var mapArr = new Map([[1, 2], [3, 4], [5, 6]]); // 从映射中获得数组
+//console.log(Array.from(mapArr));
+function fnnArr() {
+  return Array.from(arguments); // 从一个类似数组的对象中获得数组（其作为array构造时的参数）
+}
+//console.log(fnnArr(1, 'a', 2));
+let arrowArr = Array.from([1, 2, 3], x => x + x); // 使用箭头函数和 Array.from
+//console.log(Array.from({length: 5}, (v, i) => i));
+//console.log(arrowArr);
