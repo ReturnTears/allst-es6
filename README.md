@@ -147,3 +147,34 @@ copyWithin()方法将数组的一部分简单地复制到同一数组中的另�
 ```
 
 vs code支持 es6, node.js 语法提示: cnpm install --save-dev @types/node
+
+## 常用快捷键
+```text
+shift + alt + a 块级注释
+shift + alt + f 格式化代码
+js文件添加高亮/智能提示:
+1、删掉vetur，将vscode的历史记录缓存删掉
+   目录：C:\Users\{用户名}\.vscode\extensions
+   删掉vetur。
+   目录：C:\Users\{用户名}\AppData\Roaming
+   删掉Code文件夹
+2、安装typings完善js智能提示
+   npm install typings --global
+   typings init
+   项目下会自动新增jsconfig.json
+   "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "allowSyntheticDefaultImports": true
+   },
+   "exclude": [
+        "node_modules",
+        "bower_components",
+        "jspm_packages",
+        "tmp",
+        "temp"
+   ]
+3、安装想要的提示
+   typings install dt~node --global --save
+   typings install express --ambient --save
+```
