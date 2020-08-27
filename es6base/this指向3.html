@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向</title>
+    <style>
+        .box1, .box2 {
+            width: 100px;
+            height: 100px;
+            background: #ab01ab;
+            position: relative;
+            left: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+       function fn () {
+           this.num = 10;
+           console.log(this);
+       }
+       var obj = new fn();
+       /*
+        * 创建对象时，new关键字帮我们做了几件事情：
+        * 1、调用函数
+        * 2、自动创建一个对象
+        * 3、把创建出来的对象和this绑定
+        * 4、如果构造函数没有返回值，则隐式返回this对象
+        */
+        console.log(obj);
+        console.log(obj.num);
+
+        fn.num = 20;
+        fn.prototype.num = 30;
+        fn.prototype.method = function() {
+            console.log(this.num);
+        }
+        var prototype = fn.prototype;
+        var method = prototype.method;
+
+        new fn().method(); // {}.num = 10
+        prototype.method(); // 30 fn.prototype = {}
+        method();// undefined
+    </script>
+</body>
+</html>

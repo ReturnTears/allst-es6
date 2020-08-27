@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改this指向</title>
+    <style>
+        .box1, .box2 {
+            width: 100px;
+            height: 100px;
+            background: #ab01ab;
+            position: relative;
+            left: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+        var box1 = document.querySelector('.box1');
+        var box2 = document.querySelector('.box2'), a, b, c;
+        var obj = {
+            fn: () => {
+                console.log(this);// this在箭头函数定义的时候就已经指定为window了
+            },
+            fc: function() {
+                console.log(this);// 普通函数是可以修改this指向的
+            } 
+        }
+        obj.fn.call(box1);
+        // 以下三个方法都可以修改this指向
+        obj.fc.call(box2, a, b, c);
+        obj.fc.apply(box2, [a, b, c]);
+        obj.fc.bind(box2, a, b, c)();
+    </script>
+</body>
+</html>

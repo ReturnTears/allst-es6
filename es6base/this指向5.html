@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向</title>
+    <style>
+        .box1, .box2 {
+            width: 100px;
+            height: 100px;
+            background: #ab01ab;
+            position: relative;
+            left: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+        let box1 = document.querySelector('.box1');
+        let box2 = document.querySelector('.box2');
+        box1.onclick = move;
+        box2.onclick = move;
+        function move() {
+            // setTimeout(function(){
+            //     this.style.left = '500px'; // 这里的this指向的是全局的window
+            // }, 1000);
+            setTimeout(() => {
+                this.style.left = '500px'; // 箭头函数的this指向, 指的是上下文的环境
+            }, 1000);
+
+            // 以下也是ok的
+            // var _this = this;
+            // setTimeout(() => {
+            //     _this.style.left = '500px';
+            // }, 1000);
+        }
+        console.log(this);
+    </script>
+</body>
+</html>

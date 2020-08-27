@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise api</title>
+</head>
+<body>
+    <script>
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('成功的数据~')
+            }, 1000);
+        }).then(
+            value => {
+                console.log('onResolved() ~ ', value);
+            }
+        ).catch(
+            reason => {
+                console.log('onRejected() ~', reason);
+            }
+        );
+
+        // 生成一个成功值为1的promise对象
+        const p1 = new Promise((resolve, reject) => {
+            resolve(1)
+        });
+        const p2 = Promise.resolve(1);
+    </script>
+</body>
+</html>

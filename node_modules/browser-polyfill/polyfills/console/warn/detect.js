@@ -1,1 +1,0 @@
-'warn' in this.console

@@ -1,1 +1,0 @@
-'timeline' in this.console
