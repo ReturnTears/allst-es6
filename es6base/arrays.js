@@ -257,3 +257,15 @@ function fnnArr() {
 let arrowArr = Array.from([1, 2, 3], x => x + x); // 使用箭头函数和 Array.from
 //console.log(Array.from({length: 5}, (v, i) => i));
 //console.log(arrowArr);
+
+// includes(searchElement, fromIndex)方法用来判断一个数组是否包含一个指定的值，根据情况返回 true否false。
+// fromIndex可选从该索引处开始查找searchElement。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜索。默认为 0。
+// 如果计算出的索引小于 0，则整个数组都会被搜索。
+console.log([1, 2, 3].includes(2, -1)); // false
+console.log([1, 2, 3].includes(3, -1)); // true
+console.log([1, 2, NaN].includes(NaN)); // true
+// includes() 作为一个通用方法
+(function() {
+  console.log([].includes.call(arguments, 'a')); // true
+  console.log([].includes.call(arguments, 'd')); // false
+})('a','b','c');
