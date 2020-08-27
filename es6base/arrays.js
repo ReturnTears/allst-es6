@@ -322,4 +322,25 @@ while (idxlio != -1) {
   indicelio.push(idxlio);
   idxlio = (idxlio > 0 ? arraylio.lastIndexOf(elementlio, idxlio - 1) : -1);
 }
-console.log(indicelio);
+//console.log(indicelio);
+
+// length是Array的实例属性。返回或设置一个数组中的元素个数。该值是一个无符号 32-bit 整数，并且总是大于数组最高项的下标。
+// length属性的值是一个 0 到 2^32的-1次方 的整数。
+var itemsLength = ['shoes', 'shirts', 'socks', 'sweaters'];
+//console.log(itemsLength.length); 
+/*
+你可以设置length 属性的值来截断任何数组。当通过改变length属性值来扩展数组时，实际元素的数目将会增加。例
+如：将一个拥有 2 个元素的数组的 length 属性值设为 3 时，那么这个数组将会包含3个元素，并且，第三个元素的值将会是undefined
+*/
+// 遍历数组
+var numberslength = [1, 2, 3, 4, 5];
+var numlength = numberslength.length;
+for (var i = 0; i < numlength; i++) {
+  numberslength[i] *= 2;
+}
+// 截断数组
+var jieduannumbers = [1, 2, 3, 4, 5];
+if (jieduannumbers.length > 3) {
+  jieduannumbers.length = 3;
+}
+console.log(jieduannumbers);
