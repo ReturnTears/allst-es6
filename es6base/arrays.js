@@ -261,11 +261,27 @@ let arrowArr = Array.from([1, 2, 3], x => x + x); // 使用箭头函数和 Array
 // includes(searchElement, fromIndex)方法用来判断一个数组是否包含一个指定的值，根据情况返回 true否false。
 // fromIndex可选从该索引处开始查找searchElement。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜索。默认为 0。
 // 如果计算出的索引小于 0，则整个数组都会被搜索。
-console.log([1, 2, 3].includes(2, -1)); // false
-console.log([1, 2, 3].includes(3, -1)); // true
-console.log([1, 2, NaN].includes(NaN)); // true
+//console.log([1, 2, 3].includes(2, -1)); // false
+//console.log([1, 2, 3].includes(3, -1)); // true
+//console.log([1, 2, NaN].includes(NaN)); // true
 // includes() 作为一个通用方法
-(function() {
+/*(function() {
   console.log([].includes.call(arguments, 'a')); // true
   console.log([].includes.call(arguments, 'd')); // false
-})('a','b','c');
+})('a','b','c');*/
+
+// indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。
+// arr.indexOf(searchElement[, fromIndex])
+var ioArray = [2, 9, 9, 9];
+console.log(ioArray.indexOf(9, 2));
+// 找出指定元素出现的所有位置
+var indices = [];
+var ioArrays = ['a', 'b', 'a', 'c', 'a', 'd'];
+var element = 'a';
+var idx = ioArrays.indexOf(element);
+while (idx != -1) {
+  indices.push(idx);
+  idx = ioArrays.indexOf(element, idx + 1);
+}
+console.log(indices);
+
