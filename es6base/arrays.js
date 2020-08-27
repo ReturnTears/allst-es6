@@ -216,5 +216,26 @@ function isBigEnoughById(element) {
 }
 let myArr = [12, 7, 25, 22, 30];
 let condIndex = myArr.findIndex(isBigEnoughById);
-console.log(condIndex); // 2
-console.log(myArr.findIndex(isPrime));  // 1 查询数组中首个质数元素的索引
+//console.log(condIndex); // 2
+//console.log(myArr.findIndex(isPrime));  // 1 查询数组中首个质数元素的索引
+
+// forEach 方法对数组的每个元素执行一次提供的函数。
+let feArr = ['a', 'b', 'c', 'd'];
+feArr.forEach(function(element) {
+  console.log(element);
+});
+
+function Counter() {
+  this.sum = 0;
+  this.count = 0;
+}
+Counter.prototype.add = function(array) {
+  array.forEach(function(entry) {
+    this.sum += entry;
+    ++this.count;
+  }, this);
+};
+var obj = new Counter();
+obj.add([2,5,6,7]);
+console.log(obj.count);
+console.log(obj.sum);
