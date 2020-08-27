@@ -294,6 +294,32 @@ while (idx != -1) {
 // join()方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。
 var ajoin = ['Wind', 'Rain', 'Fire'];
 let defjoin = ajoin.join();
-console.log(defjoin);
+//console.log(defjoin);
 let mydefjoin = ajoin.join('-');
-console.log(mydefjoin);
+//console.log(mydefjoin);
+
+// keys() 方法返回一个新的Array迭代器，它包含数组中每个索引的键。
+var keysArr = ['a', 'b', 'c', 'd'];
+let iteratorArr = keysArr.keys();
+//console.log(iteratorArr.next());
+//console.log(iteratorArr.next());
+// key迭代器不会忽略空洞
+var keysarrs = ['a', , 'c'];
+var sparseKeys = Object.keys(keysarrs);
+var denseKeys = [...keysarrs.keys()];
+//console.log(sparseKeys); // ['0', '2']
+//console.log(denseKeys);  // [0, 1, 2]
+
+// lastIndexOf()方法返回指定元素（也即有效的 JavaScript 值或变量）在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从fromIndex处开始。
+var numbers = [2, 5, 9, 2];
+numbers.lastIndexOf(2);     // 3
+numbers.lastIndexOf(7);     // -1
+var indicelio = [];
+var arraylio = ['a', 'b', 'a', 'c', 'a', 'd'];
+var elementlio = 'a';
+var idxlio = arraylio.lastIndexOf(elementlio);
+while (idxlio != -1) {
+  indicelio.push(idxlio);
+  idxlio = (idxlio > 0 ? arraylio.lastIndexOf(elementlio, idxlio - 1) : -1);
+}
+console.log(indicelio);
