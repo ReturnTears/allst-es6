@@ -250,4 +250,102 @@ function list2() {
   return slice(arguments);
 }
 var list2 = list2(1, 2, 3);
-console.log(list2);
+//console.log(list2);
+
+/*
+some()方法测试数组中的某些元素是否通过由提供的函数实现的测试。
+some为数组中的每一个元素执行一次 callback函数，直到找到一个使得 callback返回一个“真值”（即可转换为布尔值 true 的值）。
+如果找到了这样一个值，some 将会立即返回 true。否则，some返回false。
+*/
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+}
+/*console.log([2, 5, 8, 1, 4].some(isBiggerThan10));
+console.log([12, 5, 8, 1, 4].some(isBiggerThan10));
+console.log([2, 5, 8, 1, 4].some(x => x > 10));
+console.log([12, 5, 8, 1, 4].some(x => x > 10));*/
+// 检查数组中是否存在值, 模仿includes()的功能
+var fruits = ['apple', 'banana', 'mango', 'guava'];
+function checkAvailability(arr, val) {
+  return arr.some(function(arrVal) {
+   return val === arrVal;
+  });
+}
+function checkAvailability2(arr, val) {
+  return arr.some(arrVal => val === arrVal);
+}
+//console.log(checkAvailability2(fruits, 'kela'));
+// 将任何值转换为布尔值
+var TRUTHY_VALUES = [true, 'true', 1];
+function getBoolean(a) {
+  'use strict';
+  var value = a;
+  if (typeof value === 'string') { 
+    value = value.toLowerCase().trim();
+  }
+  return TRUTHY_VALUES.some(function(t) {
+    return t === value;
+  });
+}
+/*console.log(getBoolean(false));
+console.log(getBoolean('false'));
+console.log(getBoolean(1));
+console.log(getBoolean('true'));*/
+
+/*
+sort()方法用就地（ in-place ）的算法对数组的元素进行排序，
+并返回数组。 sort 排序不一定是稳定的。默认排序顺序是根据字符串Unicode码点。
+*/
+fruits.sort();
+//console.log(fruits);
+var scores = [1, 10, 21, 2]; 
+scores.sort();
+//console.log(scores);
+function compareNumbers(a, b) {
+  return a - b;
+}
+//console.log(scores.sort(compareNumbers));
+var items = [
+  { name: 'Edward', value: 21 },
+  { name: 'Sharpe', value: 37 },
+  { name: 'And', value: 45 },
+  { name: 'The', value: -12 },
+  { name: 'Magnetic', value: 13 },
+  { name: 'Zeros', value: 37 }
+];
+items.sort(function (a, b) {
+  return a.value - b.value;
+});
+//console.log(items);
+/*
+当排序非 ASCII 字符的字符串（如包含类似 e, é, è, a, ä 等字符的字符串）。
+一些非英语语言的字符串需要使用String.localeCompare。这个函数可以将函数排序到正确的顺序
+*/
+var items2 = ['réservé', 'premier', 'cliché', 'communiqué', 'café', 'adieu'];
+items2.sort(function (a, b) {
+  return a.localeCompare(b);
+});
+//console.log(items2);
+/* 
+使用映射改善排序:
+compareFunction可能需要对元素做多次映射以实现排序，尤其当compareFunction较为复杂，
+且元素较多的时候，某些compareFunction可能会导致很高的负载。使用map辅助排序将会是一个好主意。
+基本思想是首先将数组中的每个元素比较的实际值取出来，排序后再将数组恢复。
+*/
+var list3 = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
+var mapped = list3.map(function(el, i) {
+  return { index: i, value: el.toLowerCase() };
+})
+mapped.sort(function(a, b) {
+  if (a.value > b.value) {
+    return 1;
+  }
+  if (a.value < b.value) {
+    return -1;
+  }
+  return 0;
+});
+var result = mapped.map(function(el){
+  return list3[el.index];
+});
+//console.log(result);
