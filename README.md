@@ -148,6 +148,18 @@ copyWithin()方法将数组的一部分简单地复制到同一数组中的另�
 
 vs code支持 es6, node.js 语法提示: cnpm install --save-dev @types/node
 
+## apply | bind | call
+```text
+Function.prototype.apply()
+Function.prototype.apply()将会调用一个以this和数组形式的arguments为参数的方法，
+而call()方法则只是在第二个参数形式与之不同而已。
+apply()方法接受的是一个参数数组
+Function.prototype.bind()
+bind() 方法创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+Function.prototype.call()
+call()方法接受的是参数列表
+```
+
 ## VS Code常用快捷键
 ```text
 shift + alt + a 块级注释

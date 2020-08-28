@@ -173,4 +173,81 @@ var friends = [{
 var allbooks = friends.reduce(function(prev, curr) {
   return [...prev, ...curr.books];
 }, ['Alphabet']);
-console.log(allbooks);
+//console.log(allbooks);
+
+/*
+reduceRight()方法接受一个函数作为累加器（accumulator）和数组的每个值（从右到左）将其减少为单个值。
+reduceRight为数组中每个元素调用一次callback回调函数，但是数组中被删除的索引或从未被赋值的索引会跳过
+*/
+var flattened2 = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
+    return a.concat(b);
+}, []);
+//console.log(flattened2);
+var numbers9 = ['1', '2', '3', '4', '5']; 
+var left  = numbers9.reduce(function(prev, cur)      { return prev + cur; }); 
+var right = numbers9.reduceRight(function(prev, cur) { return prev + cur; }); 
+//console.log(left);
+//console.log(right);
+
+
+/* 
+ reverse() 方法将数组中元素的位置颠倒。
+*/
+var arr1 = ['one', 'two', 'three'];
+arr1.reverse();
+//console.log(arr1);
+
+/*
+shift()方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。
+如果数组为空则返回undefined
+shift方法移除索引为 0 的元素(即第一个元素)，并返回被移除的元素，其他元素的索引值随之减 1。
+如果length属性的值为 0 (长度为 0)，则返回undefined。
+shift方法并不局限于数组：这个方法能够通过 call或apply 方法作用于类似数组的对象上.
+*/
+var arr2 = [1, 2, 3, 4]
+var sarr = arr2.shift();
+/*console.log(arr2);
+console.log(sarr);*/
+// 移除数组中的一个元素
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+//console.log(typeof myFish); // obejct
+var myFish2 = JSON.stringify(myFish);
+//console.log(typeof myFish2); // string
+var shifted = myFish.shift(); 
+/*console.log(myFish);
+console.log(shifted);*/
+
+/*
+slice() 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。
+原始数组不会被修改。
+*/
+var arr3 = ['zero', 'one', 'two', 'three'];
+var sliced = arr3.slice(1, 3);
+//console.log(sliced);
+var myBMW = { color: 'red', wheels: 4, engine: { cylinders: 4, size: 3.7 } };
+var myCar = [myBMW, 2, 'cherry condition', 'purchased 2997'];
+var newCar = myCar.slice(0, 2);
+/*console.log(JSON.stringify(myCar));
+console.log(JSON.stringify(newCar));
+console.log(myCar[0].color);
+console.log(newCar[0].color);
+myBMW.color = 'yellow';
+console.log(myCar[0].color);
+console.log(newCar[0].color);*/
+/*
+slice方法可以用来将一个类数组（Array-like）对象/集合转换成一个数组。
+只需将该方法绑定到这个对象上。
+*/
+function list() {
+   // return Array.prototype.slice.call(arguments);
+   return [].slice.call(arguments); // 两种方式效果一致
+}
+var list1 = list(1, 2, 3, 4, 5);
+//console.log(list1);
+var unboundSlice = Array.prototype.slice;
+var slice = Function.prototype.call.bind(unboundSlice);
+function list2() {
+  return slice(arguments);
+}
+var list2 = list2(1, 2, 3);
+console.log(list2);
