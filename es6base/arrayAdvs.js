@@ -349,3 +349,54 @@ var result = mapped.map(function(el){
   return list3[el.index];
 });
 //console.log(result);
+
+/*
+splice()方法通过删除现有元素和/或添加新元素来更改一个数组的内容。
+splice方法使用deleteCount参数来控制是删除还是添加
+*/
+var myFish3 = ['angel', 'clown', 'mandarin', 'sturgeon'];
+myFish3.splice(7, 1, 'drum', 'jiyu');
+//myFish3.splice(2, 0, 'drum');
+//console.log(myFish3);
+
+/*
+toLocaleString()返回一个字符串表示数组中的元素。数组中的元素将使用各自的 toLocaleString方法转成字符串，
+这些字符串将使用一个特定语言环境的字符串（例如一个逗号 ","）隔开。
+*/
+var num = 1337;
+var date = new Date();
+var myArr2 = [num, date, 'foo'];
+var toStr = myArr2.toLocaleString();
+//console.log(toStr);
+var prices = ['￥7', 500, 8123, 12]; 
+prices.toLocaleString('en-GB-u-ca-islamic', { style: 'currency', currency: 'JPY' });
+//console.log(prices);
+
+/*
+toString()返回一个字符串，表示指定的数组及其元素。
+*/
+var months = ['Jan', 'Feb', 'Mar', 'Apr'];
+//console.log(months.toString());
+
+/*
+unshift()方法将一个或多个元素添加到数组的开头，并返回新数组的长度。
+unshift特意被设计成具有通用性；这个方法能够通过 call或apply 方法作用于类似数组的对象上
+*/
+var uns = [1, 2, 3];
+uns.unshift(4, 5);
+//console.log(uns); 
+
+
+/*
+values()方法返回一个新的 Array Iterator 对象，该对象包含数组每个索引的值。
+*/
+var avals = ['w', 'y', 'k', 'o', 'p']; 
+var iterator = avals.values();
+//console.log(iterator.next().value); 
+//console.log(iterator.next().value);
+// 使用 for...of 循环进行迭代
+var avals2 = ['w', 'y', 'k', 'o', 'p'];
+var iterator2 = avals2.values();
+for (let letter of iterator2) {
+  console.log(letter);
+}
