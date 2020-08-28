@@ -14,3 +14,13 @@ console.log(ArrayBuffer.length);
 class MyArrayBuffer extends ArrayBuffer {
   static get [Symbol.species]() { return ArrayBuffer; }
 }
+/* console.log(ArrayBuffer.isView(new ArrayBuffer(10)));
+console.log(ArrayBuffer.isView(new Uint8Array()));
+console.log(ArrayBuffer.isView(new Float32Array()));
+console.log(ArrayBuffer.isView(new Int8Array(10).subarray(0, 3))); */
+/* var buffer2 = new ArrayBuffer(2);
+var dv = new DataView(buffer2);
+console.log(ArrayBuffer.isView(dv)); */
+var buffer3 = buffer.slice(0);
+console.log(buffer3);
+
