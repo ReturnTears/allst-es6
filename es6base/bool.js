@@ -22,3 +22,5 @@ console.log(flag.toString());
 var z = new Boolean();
 console.log(z.valueOf());
 
+var a = true;
+console.log(z.valueOf(a));
