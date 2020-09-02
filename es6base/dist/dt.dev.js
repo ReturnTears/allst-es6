@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * Date
  * 创建 Date实例用来处理日期和时间。
@@ -10,7 +12,6 @@
 // console.log(new Date(2020, 1, 1));
 // console.log(new Date(2020, 2, 1, 0, 70));
 // console.log(new Date(2020, 2, 1, 1, 10));
-
 // let dt = new Date();
 // console.log(dt.getDate());
 // console.log(dt.getDay());
@@ -22,7 +23,6 @@
 // console.log(dt.getSeconds());
 // console.log(dt.getTime());
 // console.log(dt.getTimezoneOffset());
-
 // let d = new Date(2020, 5, 20, 13, 14, 52);
 // console.log(d.toString());
 // console.log(d.toDateString());
@@ -33,9 +33,7 @@
 // console.log(d.toLocaleTimeString());
 // console.log(d.toString());
 // console.log(d.toTimeString());
-
-let dt = new Date(Date.UTC(2020, 5, 20, 13, 14, 52));
+var dt = new Date(Date.UTC(2020, 5, 20, 13, 14, 52));
 console.log(dt);
-
 var d = new Date(2020, 6, 17);
 console.log(d.valueOf());
