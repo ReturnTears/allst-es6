@@ -102,3 +102,72 @@ function func5(a = 55) {
     console.log(arguments[0]);
 }
 func5();
+
+/**
+ * @@iterator 属性的初始值是和Array.prototype.values属性的初始值相同的对象
+ */
+function func6() {
+    console.log(arguments);
+    for (const letter of arguments) {
+        console.log(letter);
+    }
+}
+func6('S','c','r','i','p','t');
+
+/**
+ * arguments.callee 属性包含当前正在执行的函数。
+ * 
+ * callee是arguments对象的一个属性。它可以用于引用该函数的函数体内当前正在执行的函数。
+ * 这在函数的名称是未知时很有用，例如在没有名称的函数表达式 (也称为“匿名函数”)内,也就是说
+ * 在具名函数下不能使用这个
+ */
+function func7(n) {
+    return !(n > 1) ? 1 : func7(n - 1) * n;
+}
+let func7Result = [1,2,3,4,5].map(func7);
+console.log(func7Result);
+
+let func8Result = [1, 2, 3, 4, 5].map(function(n) {
+    return !(n > 1) ? 1 : arguments.callee(n - 1) * n;
+});
+console.log(func8Result);
+
+let func8Result2 = [1, 2, 3, 4, 5].map(function factorial(n) {
+    return !(n > 1) ? 1 : factorial(n-1) * n;
+});
+console.log(func8Result2);
+
+/**
+ * 在匿名递归函数中使用 arguments.callee
+ * 
+ * 递归函数必须能够引用它本身。很典型的，函数通过自己的名字调用自己。
+ * 然而，匿名函数 (通过函数表达式 或者函数构造器 创建) 没有名称。
+ * 因此如果没有可访问的变量指向该函数，唯一能引用它的方式就是通过 arguments.callee
+ */
+function func9() {
+    return function(n) {
+        if (n <= 1)
+           return 1;
+        return n * arguments.callee(n - 1);
+    };
+}
+let func9Result = func9()(5);
+console.log(func9Result);
+
+
+/**
+ * 该 arguments.length 属性包含传递给该函数的参数的数量。
+ * arguments.length表示的是实际上向函数传入了多少个参数,这个数字可以比形参数量大,
+ * 也可以比形参数量小(形参数量的值可以通过Function.length获取到
+ */
+console.log(arguments.length);
+console.log(Function.length);
+function func10(base) {
+    base = Number(base);
+    for (var i = 1; i < arguments.length; i++) {
+        base += Number(arguments[i]);
+    }
+    return base;
+}
+let func10Result = func10(5);
+console.log(func10Result);  
