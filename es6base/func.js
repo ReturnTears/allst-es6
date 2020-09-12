@@ -170,4 +170,95 @@ function func10(base) {
     return base;
 }
 let func10Result = func10(5);
-console.log(func10Result);  
+console.log(func10Result);
+
+/**
+ * Arrow functions: 箭头函数
+ * 箭头函数表达式的语法比函数表达式更短，并且不绑定自己的this，arguments，super或 new.target。
+ * 这些函数表达式最适合用于非方法函数，并且它们不能用作构造函数。
+ * 
+ * 基础语法:
+ * (param1, param2, …, paramN) => { statements } 
+ * (param1, param2, …, paramN) => expression
+ * 当只有一个参数时，圆括号是可选的:
+ * (singleParam) => { statements }
+ * singleParam => { statements }
+ * 没有参数的函数应该写成一对圆括号:
+ * () => { statements }
+ * 
+ * 高级语法:
+ * //加括号的函数体返回对象字面量表达式：
+ * params => ({foo: bar})
+ * //支持剩余参数和默认参数
+ * (param1, param2, ...rest) => { statements }
+ * (param1 = defaultValue1, param2, …, paramN = defaultValueN) => { statements }
+ * //同样支持参数列表解构
+ * let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+ */
+console.log('-----------------arrow function------------------');
+let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+console.log(f());
+/**
+ * 引入箭头函数有两个方面的作用：更简短的函数并且不绑定this
+ * 更短的函数
+ */
+var langsElements = [
+    "Java",
+    "JavaScript",
+    "Scala",
+    "Golang",
+    "Python",
+    "Haskell"
+];
+// 普通函数
+var fn1 = langsElements.map(function(e) {
+    return e.length;
+});
+// 箭头函数
+var fn2 = langsElements.map((e) => {return e.length;});
+// 箭头函数只有一个参数时，可以省略参数的圆括号
+var fn2 = langsElements.map(e => {return e.length;});
+// 当箭头函数的函数体只有一个 `return` 语句时，可以省略 `return` 关键字和方法体的花括号
+var fn3 = langsElements.map(e => e.length);
+/**
+ * 如果只需要一个属性, 例如: `length` 属性，所以可以使用参数解构
+ * 需要注意的是字符串 `"length"` 是我们想要获得的属性的名称
+ */
+var fn4 = langsElements.map(({"length": eLen}) => eLen);
+console.log(fn4);
+
+/**
+ * 在ECMAScript 3/5中，通过将this值分配给封闭的变量，可以解决this问题。
+ */
+function Personal() {
+    var that = this;
+    // Personal() 构造函数定义 `this`作为它自己的实例.
+    that.name = "嘿呀";
+    that.age = 0;
+
+    setInterval(function growUp() {
+        that.age++;
+        console.log(that.name + "_" + that.age);
+    }, 2000);
+}
+
+function Personal2() {
+    this.age = 0;
+    setInterval(() => {
+        this.age++; // |this| 正确地指向 p 实例
+        console.log("_" + this.age);
+    }, 1000);
+}
+//let p = new Personal2();
+//console.log(p);
+
+// 与严格模式的关系
+//var fn5 = () => {'use strict'; return this;};
+//console.log(fn5());
+
+/** 
+ * 通过 call 或 apply 调用
+ * 由于箭头函数没有自己的this指针，
+ * 通过call()或apply()方法调用一个函数时，只能传递参数，
+ * 他们的第一个参数会被忽略。
+ */
