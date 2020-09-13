@@ -262,3 +262,10 @@ function Personal2() {
  * 通过call()或apply()方法调用一个函数时，只能传递参数，
  * 他们的第一个参数会被忽略。
  */
+var adder = {
+    base: 1,
+    add: function(a) {
+        var f = v => v + this.base;
+        return f(a);
+    }
+};
