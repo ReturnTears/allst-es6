@@ -62,6 +62,17 @@ console.log(listHTML);
 /**
  * 剩余参数、默认参数和解构赋值参数
  * arguments对象可以与剩余参数、默认参数和解构赋值参数结合使用。
+ * 
+ * 补充:
+ * 剩余参数语法允许我们将一个不定数量的参数表示为一个数组,
+ * 如果函数的最后一个命名参数以...为前缀，则它将成为一个由剩余参数组成的真数组，
+ * 其中从0（包括）到theArgs.length（排除）的元素由传递给函数的实际参数提供。
+ *
+ *---------------------------------------------------------------------
+ * 剩余参数和 arguments对象之间的区别主要有三个：
+ * 剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参。
+ * arguments对象不是一个真正的数组，而剩余参数是真正的 Array实例，也就是说你能够在它上面直接使用所有的数组方法，比如 sort，map，forEach或pop。
+ * arguments对象还有一些附加的属性 （如callee属性）。
  */
 function foo(...args) {
     return args;
@@ -267,5 +278,82 @@ var adder = {
     add: function(a) {
         var f = v => v + this.base;
         return f(a);
+    },
+    addThruCall: function(a) {
+        var f = v => v + this.base;
+        var b = {
+            base: 3
+        };
+        /**
+         * 通过 call 或 apply 调用：
+         * 由于 this已经在词法层面完成了绑定，通过 call()或apply()方法调用一个函数时，只是传入了参数而已，
+         * 对 this 并没有什么影响
+         */
+        return f.call(b, a);
     }
 };
+//console.log(adder.add(1));
+//console.log(adder.addThruCall(1));
+
+/**
+ * 不绑定arguments
+ * 箭头函数不绑定Arguments 对象
+ */
+var arguments = 66;
+var arrFunc = () => arguments;
+console.log(arrFunc());
+function foo() {
+    var fn6 = (i) => arguments[0] + i;
+    return fn6(2);
+}
+console.log(foo(5));
+
+/**
+ * 箭头函数表达式对非方法函数是最合适的
+ * 像方法一样使用箭头函数
+ * 箭头函数没有定义this绑定
+ */
+'use strict';
+var obj = {
+  i: 10,
+  b: () => console.log(this.i, this),
+  c: function() {
+    console.log(this.i, this);
+  }
+}
+Object.defineProperty(obj, 'd', {
+  get: () => {
+    console.log(this.a, typeof this.a, this);
+    return this.a + 10;
+  }
+});
+// obj.b();
+// obj.c();
+// obj.d;
+
+
+/*
+ * 箭头函数不能用作构造器，和new一起用会抛出错误。
+ * 箭头函数没有prototype属性。
+ * yield关键字通常不能在箭头函数中使用（除非是嵌套在允许使用的函数内）。因此，箭头函数不能用作生成器。
+ */
+// var Far = () => {};
+// var far = new Far(); // Far is not a constructor
+// console.log(Far.prototype);
+
+/**
+ * 函数体:
+ * 箭头函数可以有一个“简写体”或常见的“块体”。
+ * 在一个简写体中，只需要一个表达式，并附加一个隐式的返回值。在块体中，必须使用明确的return语句
+ */
+var funcn1 = x => x * x;
+var funcn2 = (x, y) => { return x + y; }; 
+
+/**
+* 返回对象字面量: 
+* 用圆括号把对象字面量包起来
+* 箭头函数在参数和箭头之间不能换行。
+* 虽然箭头函数中的箭头不是运算符，但箭头函数具有与常规函数不同的特殊运算符优先级解析规则。
+*/
+var funcn3 = () => ({foo: 1});
+console.log(funcn3);
