@@ -1,4 +1,5 @@
 /**
+ * TODO
  * AsyncFunction 构造函数用来创建新的 异步函数对象，JavaScript 中每个异步函数都是 AsyncFunction 的对象。
  * 注意，AsyncFunction并不是一个全局对象，需要通过下面的方法来获取:
  * Object.getPrototypeOf(async function(){}).constructor
@@ -25,4 +26,28 @@
  * AsyncFunction 实例
  * AsyncFunction实例继承了AsyncFunction.prototype的方法和属性。
  * 和所有构造函数一样，修改 AsyncFunction 构造函数的原型对象会同时对所有 AsyncFunction 实例上生效。
- */ 
+ */
+// 通过 AsyncFunction 构造器创建一个异步函数
+function resolveAfter2Seconds(x) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(x);
+        }, 2000);
+    });
+}
+var AsyncFunction = Object.getPrototypeOf(async function () { }).constructor
+var a = new AsyncFunction('a',
+    'b',
+    'return await resolveAfter2Seconds(a) + await resolveAfter2Seconds(b);');
+a(10, 20).then(v => {
+    console.log(v);
+});
+/**
+ * AsyncFunction.prototype属性表示AsyncFunction的原型对象.
+ * 描述
+ * AsyncFunction对象继承自 AsyncFunction.prototype.AsyncFunction.prototype不能被修改.
+ * 
+ * 属性
+ * AsyncFunction.constructor默认值为AsyncFunction.AsyncFunction.prototype[@@toStringTag]Returns "AsyncFunction".
+ * 
+ */
