@@ -5,8 +5,8 @@ var first = color[0];
 var last = color[color.length - 1];
 // console.log(first, last);
 // 遍历数组
-color.forEach(function(item, index, array) {
-// console.log(item, index);
+color.forEach(function (item, index, array) {
+  // console.log(item, index);
 });
 // 添加元素到数组的末尾
 var newLength = color.push('Blue');
@@ -49,8 +49,8 @@ var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
 //console.log(years['2'] != years['02']);
 // 如果对象的属性名称是保留字（！），那么就只能通过字符串的形式用方括号来访问
 var promise = {
-'var' : 'text',
-'array': [1, 2, 3, 4]
+  'var': 'text',
+  'array': [1, 2, 3, 4]
 };
 // console.log(promise['var']);
 // 正则匹配结果所返回的数组
@@ -121,7 +121,7 @@ numbers.fill(1, 2, 3);
 
 // filter
 var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
-var longWords = words.filter(function(word){
+var longWords = words.filter(function (word) {
   return word.length > 6;
 });
 var longWords2 = words.filter(w => w.length > 7);
@@ -130,7 +130,7 @@ var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
 
 // filter
 var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
-var longWords = words.filter(function(word){
+var longWords = words.filter(function (word) {
   return word.length > 6;
 });
 // console.log(longWords);
@@ -148,29 +148,29 @@ var jsonArr = [
   { id: 0 },
   { id: 3 },
   { id: 12.2 },
-  { },
+  {},
   { id: null },
   { id: NaN },
   { id: 'undefined' }
 ];
 var invalidEntries = 0;
 function isNumber(obj) {
-  return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);
+  return obj !== undefined && typeof (obj) === 'number' && !isNaN(obj);
 }
 function filterByID(item) {
   if (isNumber(item.id)) {
     return true;
-  } 
+  }
   invalidEntries++;
-  return false; 
+  return false;
 }
 var arrByID = jsonArr.filter(filterByID);
 //console.log('Filtered Array\n', arrByID);
 //console.log('Number of Invalid Entries = ', invalidEntries); 
 var fruits_eight = ['apple', 'banana', 'grapes', 'mango', 'orange'];
 function filterItems(query) {
-  return fruits_eight.filter(function(el) {
-      return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  return fruits_eight.filter(function (el) {
+    return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
   })
 }
 const filterItems2 = (query) => {
@@ -188,12 +188,12 @@ let myEleIndex = [12, 5, 8, 130, 44].indexOf(8);
 // console.log([12, 5, 8, 130, 44].includes(8));
 // 用对象的属性查找数组里的对象
 var inventory = [
-    {name: 'apples', quantity: 2},
-    {name: 'bananas', quantity: 0},
-    {name: 'cherries', quantity: 5}
+  { name: 'apples', quantity: 2 },
+  { name: 'bananas', quantity: 0 },
+  { name: 'cherries', quantity: 5 }
 ];
-function findCherries(fruit) { 
-    return fruit.name === 'cherries';
+function findCherries(fruit) {
+  return fruit.name === 'cherries';
 }
 // console.log(inventory.find(findCherries));
 // 寻找数组中的质数
@@ -221,7 +221,7 @@ let condIndex = myArr.findIndex(isBigEnoughById);
 
 // forEach 方法对数组的每个元素执行一次提供的函数。
 let feArr = ['a', 'b', 'c', 'd'];
-feArr.forEach(function(element) {
+feArr.forEach(function (element) {
   //console.log(element);
 });
 
@@ -229,14 +229,14 @@ function Counter() {
   this.sum = 0;
   this.count = 0;
 }
-Counter.prototype.add = function(array) {
-  array.forEach(function(entry) {
+Counter.prototype.add = function (array) {
+  array.forEach(function (entry) {
     this.sum += entry;
     ++this.count;
   }, this);
 };
 var obj = new Counter();
-obj.add([2,5,6,7]);
+obj.add([2, 5, 6, 7]);
 //console.log(obj.count);
 //console.log(obj.sum);
 
@@ -339,8 +339,36 @@ for (var i = 0; i < numlength; i++) {
   numberslength[i] *= 2;
 }
 // 截断数组
-var jieduannumbers = [1, 2, 3, 4, 5];
+var jieduannumbers = [7, 2, 3, 4, 5];
 if (jieduannumbers.length > 3) {
   jieduannumbers.length = 3;
 }
-console.log(jieduannumbers);
+// console.log(jieduannumbers);
+
+/**
+ * sort()方法用就地（ in-place ）的算法对数组的元素进行排序，并返回数组。 
+ * sort 排序不一定是稳定的。默认排序顺序是根据字符串Unicode码点
+ * @param {*} v1 
+ * @param {*} v2 
+ */
+function compare(v1, v2) {
+  if (v1 < v2) {
+    return -1
+  } else if (v1 > v2) {
+    return 1
+  } else {
+    return 0
+  }
+}
+jieduannumbers.sort(compare)
+console.log(jieduannumbers)
+
+/**
+ * reduce
+ * 参数说明:前一个值,当前值,索引位置,array
+ */
+const reduceArr = [1, 2, 3, 4, 5, 4, 3, 2, 1]
+var result = reduceArr.reduce(function (prev, cur, index, array) {
+  return prev + cur
+})
+console.log(result)
