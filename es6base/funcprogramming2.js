@@ -41,11 +41,90 @@ var memoize = function(f) {
     };
 };
 var squareNumber  = memoize(function(x){ return x*x; });
-console.log(squareNumber(4));
-console.log(squareNumber(4));   // 从缓存中读取输入值为 4 的结果
+// console.log(squareNumber(4));
+// console.log(squareNumber(4));   // 从缓存中读取输入值为 4 的结果
 
 /**
  * 我们可以使用一种叫做“等式推导”（equational reasoning）的技术来分析代码。所谓“等式推导”就是“一对一”替换，有点像在不考虑程序性执行的怪异行为（quirks of programmatic evaluation）的情况下，手动执行相关代码。
  * 总之，等式推导带来的分析代码的能力对重构和理解代码非常重要。
  * 
  */
+
+ /**
+  * 柯里化（curry）
+  * 不可或缺的 curry:
+  * {
+  *     curry 的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。
+  *     你可以一次性地调用 curry 函数，也可以每次只传一个参数分多次调用。
+  * }
+  */
+ var add = function(x) {
+    return function(y) {
+      return x + y;
+    };
+  };
+var increment = add(1);
+var addTen = add(10);
+
+// console.log(increment(2)) // 3
+// console.log(addTen(2)) // 12
+
+/**
+ * Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
+ * 安装：
+ *      通过 npm：
+ *      $ npm i -g npm
+ *      $ npm i --save lodash
+ *      或者 npm install lodash 安装 lodash
+ *      Node.js：
+ *      // Load the full build.
+ *      var _ = require('lodash');
+ *      // Load the core build.
+ *      var _ = require('lodash/core');
+ *      // Load the FP build for immutable auto-curried iteratee-first data-last methods.
+ *      var fp = require('lodash/fp');
+ *      // Load method categories.
+ *      var array = require('lodash/array');
+ *      var object = require('lodash/fp/object');
+ *      // Cherry-pick methods for smaller browserify/rollup/webpack bundles.
+ *      var at = require('lodash/at');
+ *      var curryN = require('lodash/fp/curryN');
+ * 
+ *  只传给函数一部分参数通常也叫做局部调用（partial application），能够大量减少样板文件代码（boilerplate code）
+ *  
+ */
+var curry = require('lodash').curry;
+// console.log(curry)
+var _ = require('lodash');
+var result = _.chunk(['a', 'b', 'c', 'd'], 2)
+console.log(result)
+
+var match = curry(function(what, str) {
+    return str.match(what);
+});
+  
+var replace = curry(function(what, replacement, str) {
+    return str.replace(what, replacement);
+});
+  
+var filter = curry(function(f, ary) {
+    return ary.filter(f);
+});
+  
+var map = curry(function(f, ary) {
+    return ary.map(f);
+});
+
+// console.log('add', map(add(2)));
+
+const R = require('ramda');
+// var words = function(str) {
+//     return R.split(' ', str);
+// };
+// 
+var words = R.split(' ');
+console.log(words('hi world'))
+
+
+
+

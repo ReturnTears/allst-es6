@@ -1,1 +1,0 @@
-'assert' in this.console
