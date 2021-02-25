@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>节流</title>
+        <style>
+            .box {
+                height: 200px;
+                background: #0A8CD2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <script>
+            var box = document.querySelector(".box");
+            var testjl = debounce(move, 1000);
+            box.onmousemove = testjl;
+            
+            function move(ev) {
+                this.innerHTML = ev.clientX;
+            }
+            // 节流函数
+            function jl(fn, wait) {
+                let timmer = null;
+                return function() {
+                    var args = arguments
+                    if (!timmer) {
+                        timmer = setTimeout(() => {
+                            clearTimeout(timmer);
+                            fn.apply(this. args)
+                        }, wait)
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

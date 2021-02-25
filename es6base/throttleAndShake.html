@@ -21,7 +21,7 @@
         function move(ev) {
             this.innerHTML = ev.clientX + ',' + ev.clientY;
         }
-        // 节流函数
+        // 防抖函数
         function debounce(fn, wait) {
             let timer = null;
             return function() {
