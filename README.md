@@ -175,6 +175,28 @@ Installing Cypress via yarn:
 via direct download：
         查看官网：https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
 You can now open Cypress by running：node_modules/.bin/cypress open
+
+4、rollup.js
+官方网址：https://rollupjs.org/guide/en/
+Install: npm install --global rollup
+Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码
+
+5、day.js
+官方网址：https://day.js.org/
+国内网址：https://dayjs.gitee.io/zh-CN/
+Install：npm install dayjs
+
+
+6、immer
+
+7、jsdoc
+
+8、p-limit
+
+9、akita
+
+10、js-cookie
+
 ```
 
 ## VS Code常用快捷键
