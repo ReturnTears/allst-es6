@@ -160,6 +160,23 @@ Function.prototype.call()
 call()方法接受的是参数列表
 ```
 
+## JavaScript常用工具库
+```text
+1、ramda
+
+2、lodash
+
+3、cypress
+官方网址：https://www.cypress.io/
+Install Cypress via npm:
+        npm install cypress 或者 npm install cypress --save-dev
+Installing Cypress via yarn:
+        yarn add cypress --dev
+via direct download：
+        查看官网：https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
+You can now open Cypress by running：node_modules/.bin/cypress open
+```
+
 ## VS Code常用快捷键
 ```text
 shift + alt + a 块级注释
