@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Css</title>
+    <style type="text/css">
+        #position {
+            position: absolute; /* static | relative | absolute | fixed */
+            top: 50%;left: 50%;width: 150px;height: 40px;margin: -20px 0 0 -75px;padding: 0 10px;background: #eee;line-height: 2.4;
+        }
+
+        .z1,.z2,.z3{position:absolute;width:200px;height:100px;padding:5px 10px;color:#fff;text-align:right;}
+        .z1{z-index:1;top:0px;left:0px;background:#000;}
+        .z2{z-index:2;top:30px;left:30px;background:#C00;}
+        .z3{z-index:3;top:60px;left:60px;background:#999;}
+
+        .test{position:absolute;left: 50%;top:-100px;width:200px;height:200px;padding:5px 10px;background:#c00;color:#fff;line-height:12;}
+
+        body{font:14px/1.5 georgia,simsun,arial;}
+        h1{margin-top:100px 0;font-size:20px;}
+        ul{margin:0;padding:0;list-style:none;}
+        .table{display:table;border-collapse:collapse;border:1px solid #ccc;margin-top: 180px;}
+        .table-caption{display:table-caption;margin:0;padding:0;font-size:16px;}
+        .table-column-group{display:table-column-group;}
+        .table-column{display:table-column;width:100px;}
+        .table-row-group{display:table-row-group;}
+        .table-row{display:table-row;}
+        .table-row-group .table-row:hover,.table-footer-group .table-row:hover{background:#f6f6f6;}
+        .table-cell{display:table-cell;padding:0 5px;border:1px solid #ccc;}
+        .table-header-group{display:table-header-group;background:#eee;font-weight:bold;}
+        .table-footer-group{display:table-footer-group;}
+    </style>
+</head>
+<body>
+    <div id="position">水平垂直居中的对象</div>
+
+    <div class="z1">z-index:1</div>
+    <div class="z2">z-index:2</div>
+    <div class="z3">z-index:3</div>
+
+    <div class="test">我将出现在浏览器顶部</div>
+
+    <h1>display构造的table小例子，IE7及以下浏览器不支持本示例</h1>
+    <div class="table">
+        <h2 class="table-caption">花名册：</h2>
+        <div class="table-column-group">
+            <div class="table-column"></div>
+            <div class="table-column"></div>
+            <div class="table-column"></div>
+        </div>
+        <div class="table-header-group">
+            <ul class="table-row">
+                <li class="table-cell">序号</li>
+                <li class="table-cell">姓名</li>
+                <li class="table-cell">年龄</li>
+            </ul>
+        </div>
+        <div class="table-footer-group">
+            <ul class="table-row">
+                <li class="table-cell">footer</li>
+                <li class="table-cell">footer</li>
+                <li class="table-cell">footer</li>
+            </ul>
+        </div>
+        <div class="table-row-group">
+            <ul class="table-row">
+                <li class="table-cell">1</li>
+                <li class="table-cell">John</li>
+                <li class="table-cell">19</li>
+            </ul>
+            <ul class="table-row">
+                <li class="table-cell">2</li>
+                <li class="table-cell">Mark</li>
+                <li class="table-cell">21</li>
+            </ul>
+            <ul class="table-row">
+                <li class="table-cell">3</li>
+                <li class="table-cell">Kate</li>
+                <li class="table-cell">26</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
