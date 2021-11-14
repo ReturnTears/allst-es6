@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Css</title>
+    <style type="text/css">
+        p {
+            width: 100px;
+            height: 50px;
+            padding: 20px;
+            border: 1px solid;
+        }
+
+        .awesome {
+            text-transform: uppercase;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            border: 5px solid;
+            padding: 2rem;
+
+            /* The important extrinsic width */
+            width: 320px;
+        }
+
+        .awesome[data-sizing="intrinsic"] {
+            width: min-content;
+        }
+
+        /*
+            Presentational styles 
+        */
+        .awesome {
+            --flow-space: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <p>I am a paragraph of text that has a few words in it.</p>
+    <main>
+        <div class="wrapper">
+          <article class="flow">
+            <h1>Extrinsic sizing vs intrinsic sizing</h1>
+            <figure class="callout">
+              <p>
+                Notice that when the box is using <strong>extrinsic sizing</strong>, there’s
+                a limit of how much content you can add before it overflows out of the box’s
+                bounds. This makes the word, “awesome”, overflow.
+              </p>
+            </figure>
+            <label class="toggle" for="intrinsic-switch">
+              <span class="toggle__label">Turn on intrinsic sizing</span>
+              <input type="checkbox" role="switch" class="toggle__element" id="intrinsic-switch" />
+              <div class="toggle__decor" aria-hidden="true">
+                <div class="toggle__thumb"></div>
+              </div>
+            </label>
+            <p class="awesome" data-element="awesome">CSS is awesome</p>
+          </article>
+        </div>
+      </main>
+</body>
+<script type="text/javascript">
+    const awesome = document.querySelector('[data-element="awesome"]');
+    const intrinsicSwitch = document.querySelector("#intrinsic-switch");
+
+    // Set sizing attribute based on switch
+    intrinsicSwitch.addEventListener("change", () => {
+        awesome.setAttribute(
+            "data-sizing",
+            intrinsicSwitch.checked ? "intrinsic" : "extrinsic"
+        );
+    });
+
+</script>
+</html>

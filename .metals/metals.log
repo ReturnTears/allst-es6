@@ -1,0 +1,15 @@
+[0m2021.10.19 10:07:58 INFO  Started: Metals version 0.10.7 in workspace 'E:\Projects\WebSormtProject\allst-es6' for client Visual Studio Code 1.61.1.[0m
+[0m2021.10.19 10:08:00 INFO  time: initialize in 2.25s[0m
+[0m2021.10.19 10:08:04 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.19 10:08:04 WARN  no build tool detected in workspace 'E:\Projects\WebSormtProject\allst-es6'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.19 11:00:21 INFO  shutting down Metals[0m
+[0m2021.10.29 12:06:27 INFO  Started: Metals version 0.10.7 in workspace 'E:\Projects\WebSormtProject\allst-es6' for client Visual Studio Code 1.61.2.[0m
+[0m2021.10.29 12:06:33 INFO  time: initialize in 5.67s[0m
+[0m2021.10.29 12:06:34 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.29 12:06:34 WARN  no build tool detected in workspace 'E:\Projects\WebSormtProject\allst-es6'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.29 12:06:38 INFO  shutting down Metals[0m
+[0m2021.11.07 00:03:20 INFO  Started: Metals version 0.10.9 in workspace 'E:\Projects\WebSormtProject\allst-es6' for client Visual Studio Code 1.62.0.[0m
+[0m2021.11.07 00:03:24 INFO  time: initialize in 3.89s[0m
+[0m2021.11.07 00:03:25 WARN  Build server is not auto-connectable.[0m
+[0m2021.11.07 00:03:25 WARN  no build tool detected in workspace 'E:\Projects\WebSormtProject\allst-es6'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.11.07 00:03:48 INFO  shutting down Metals[0m
