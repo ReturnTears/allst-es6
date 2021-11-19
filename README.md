@@ -24,7 +24,7 @@ node环境：this指向module.exports
         构造函数中的this指向的是实例对象
         如果构造函数中有return， 如果return的值是对象，则this指向返回的对象，如果不是对象，则this指向保持原来的规则，在这里null比较特殊
 箭头函数：箭头函数本身是没有this和arguments的， 在箭头函数中引用this实际上调用的是定义在上一层的this
-
+箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值
 修改this指向：
 ```
 ## 节流与防抖
