@@ -32,5 +32,59 @@ if (_.isError(elements)) {
     elements = [];
 }
 
-// console.log(elements)
+console.log(elements)
 
+let diffBy = _.differenceBy([1, 2], [2, 3]);
+console.log(diffBy)
+
+let objects = [{'x': 1, y: 2}, {'x': 2, 'y': 1}]
+let diffWith = _.differenceWith(objects, [{'x': 1, 'y': 2}], _.isEqual)
+console.log(diffWith)
+
+// _.drop(array [, n=1])
+
+let drop1 = _.drop([1, 2, 3]);
+console.log(drop1)
+
+let drop2 = _.drop([1, 2, 3], 2);
+console.log(drop2)
+ 
+let drop3 = _.drop([1, 2, 3], 5);
+console.log(drop3)
+ 
+let drop4 = _.drop([1, 2, 3], 0);
+console.log(drop4)
+
+// _.dropRight(array [,n=1])
+
+let drop5 = _.dropRight([1, 2, 3]);
+console.log(drop5)
+ 
+let drop6 = _.dropRight([1, 2, 3], 2);
+console.log(drop6)
+ 
+let drop7 = _.dropRight([1, 2, 3], 5);
+console.log(drop7)
+ 
+let drop8 = _.dropRight([1, 2, 3], 0);
+console.log(drop8)
+
+// _.dropRightWhile(array, predicate=_.identity)
+var users = [
+    { 'user': 'barney',  'active': true },
+    { 'user': 'fred',    'active': false },
+    { 'user': 'pebbles', 'active': false }
+];
+let res1 = _.dropRightWhile(users, function(o) { return !o.active; });
+console.log(res1);
+
+let res2 = _.dropRightWhile(users, { user: 'pebbles', active: false });
+console.log(res2);
+
+let res3 = _.dropRightWhile(users, ['active', false]);
+console.log(res3);
+
+let res4 = _.dropRightWhile(users, 'active');
+console.log(res4);
+
+// _.dropWhile(array, predicate=_.identity) 与 dropRightWhile 相反
