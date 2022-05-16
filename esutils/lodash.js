@@ -88,3 +88,22 @@ let res4 = _.dropRightWhile(users, 'active');
 console.log(res4);
 
 // _.dropWhile(array, predicate=_.identity) 与 dropRightWhile 相反
+
+var number = [1, 2, 3]
+let num1 = number.fill(1)
+console.log(num1);
+
+let num2 = _.fill(number, 'a')
+console.log(num2);
+console.log(number);
+
+let num3 = _.fill(Array(3), 3);
+console.log(num3);
+
+// _.fill(array, value, start=0, end=array.length) 填充的元素array与value来自start为止，但不包括end。
+
+let num4 = _.fill([4,6,8,10], '*', 1, 3)
+console.log(num4);
+
+let index1 = _.findIndex(users, function(o) {return o.user == 'barney'})
+console.log(index1);

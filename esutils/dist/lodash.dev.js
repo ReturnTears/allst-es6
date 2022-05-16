@@ -122,3 +122,26 @@ console.log(res3);
 var res4 = _.dropRightWhile(users, 'active');
 
 console.log(res4); // _.dropWhile(array, predicate=_.identity) 与 dropRightWhile 相反
+
+var number = [1, 2, 3];
+var num1 = number.fill(1);
+console.log(num1);
+
+var num2 = _.fill(number, 'a');
+
+console.log(num2);
+console.log(number);
+
+var num3 = _.fill(Array(3), 3);
+
+console.log(num3); // _.fill(array, value, start=0, end=array.length) 填充的元素array与value来自start为止，但不包括end。
+
+var num4 = _.fill([4, 6, 8, 10], '*', 1, 3);
+
+console.log(num4);
+
+var index1 = _.findIndex(users, function (o) {
+  return o.user == 'barney';
+});
+
+console.log(index1);
