@@ -145,3 +145,52 @@ var index1 = _.findIndex(users, function (o) {
 });
 
 console.log(index1);
+
+var index2 = _.findIndex(users, {
+  'user': 'fred',
+  'active': false
+});
+
+console.log(index2);
+
+var index3 = _.findLastIndex(users, function (o) {
+  return o.user == 'pebbles';
+});
+
+console.log(index3); // flatten
+
+var flat1 = _.flatten([1, [2, [3, [4]], 5]]);
+
+console.log(flat1); // flattenDeep
+
+var flat2 = _.flattenDeep([1, [2, [3, [4]], 5]]);
+
+console.log(flat2); // flattenDepth(array, depth = 1)
+
+var flat3 = _.flattenDepth([1, [2, [3, [4]], 5]], 2);
+
+console.log(flat3); // fromPairs
+
+var fp1 = _.fromPairs([['a', 1], ['b', 2]]);
+
+console.log(fp1);
+
+var fp2 = _.toPairs(fp1);
+
+console.log(fp2);
+
+var he = _.head([1, 2, 3]);
+
+console.log(he);
+
+var he2 = _.head([]);
+
+console.log(he2);
+
+var idf1 = _.indexOf([1, 2, 1, 2], 2);
+
+console.log(idf1);
+
+var idf2 = _.indexOf([1, 2, 1, 2], 2, 2);
+
+console.log(idf2);

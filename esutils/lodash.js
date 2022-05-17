@@ -107,3 +107,41 @@ console.log(num4);
 
 let index1 = _.findIndex(users, function(o) {return o.user == 'barney'})
 console.log(index1);
+
+let index2 = _.findIndex(users, { 'user': 'fred', 'active': false });
+console.log(index2);
+
+let index3 = _.findLastIndex(users, function(o) { return o.user == 'pebbles'; });
+console.log(index3);
+
+// flatten
+let flat1 = _.flatten([1, [2, [3, [4]], 5]])
+console.log(flat1);
+
+// flattenDeep
+let flat2 = _.flattenDeep([1, [2, [3, [4]], 5]])
+console.log(flat2);
+
+// flattenDepth(array, depth = 1)
+let flat3 = _.flattenDepth([1, [2, [3, [4]], 5]], 2)
+console.log(flat3);
+
+// fromPairs
+let fp1 = _.fromPairs([['a', 1], ['b', 2]])
+console.log(fp1)
+
+let fp2 = _.toPairs(fp1)
+console.log(fp2)
+
+let he = _.head([1, 2, 3])
+console.log(he)
+
+let he2 = _.head([]);
+console.log(he2)
+
+let idf1 = _.indexOf([1, 2, 1, 2], 2);
+console.log(idf1);
+
+let idf2 = _.indexOf([1, 2, 1, 2], 2, 2);
+console.log(idf2);
+
