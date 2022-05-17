@@ -183,6 +183,10 @@ var he = _.head([1, 2, 3]);
 
 console.log(he);
 
+var la = _.last([1, 2, 3]);
+
+console.log(la);
+
 var he2 = _.head([]);
 
 console.log(he2);
@@ -191,6 +195,112 @@ var idf1 = _.indexOf([1, 2, 1, 2], 2);
 
 console.log(idf1);
 
+var last1 = _.lastIndexOf([1, 2, 1, 2], 2);
+
+console.log(last1);
+
 var idf2 = _.indexOf([1, 2, 1, 2], 2, 2);
 
 console.log(idf2);
+
+var last2 = _.lastIndexOf([1, 2, 1, 2], 2, 2);
+
+console.log(last2);
+
+var ini1 = _.initial([1, 2, 3, 4, 5]);
+
+console.log(ini1);
+
+var int1 = _.intersection([1, 2], [2, 3]);
+
+console.log(int1);
+
+var int2 = _.intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor);
+
+console.log(int2);
+
+var int3 = _.intersectionBy([{
+  'x': 1
+}], [{
+  'x': 2
+}, {
+  'x': 1
+}], 'x');
+
+console.log(int3);
+var objs = [{
+  'x': 1,
+  'y': 2
+}, {
+  'x': 2,
+  'y': 1
+}];
+var others = [{
+  'x': 1,
+  'y': 1
+}, {
+  'x': 1,
+  'y': 2
+}];
+
+var int4 = _.intersectionWith(objs, others, _.isEqual);
+
+console.log(int4);
+var jo1 = [1, 2, 3, 4].join('|');
+console.log(jo1);
+
+var jo2 = _.join([1, 2, 3, 4], '~');
+
+console.log(jo2);
+
+var nth1 = _.nth(['a', 'b', 'c', 'd'], 1);
+
+console.log(nth1);
+
+var nth2 = _.nth(['a', 'b', 'c', 'd'], -2);
+
+console.log(nth2);
+
+var pu1 = _.pull(['a', 'b', 'c', 'd'], 'a', 'c');
+
+console.log(pu1);
+
+var pu2 = _.pullAll(['a', 'b', 'c', 'd', 'a', 'c'], ['a', 'c']);
+
+console.log(pu2);
+
+var pu3 = _.pullAllBy([{
+  'x': 1
+}, {
+  'x': 2
+}, {
+  'x': 3
+}, {
+  'x': 1
+}], [{
+  'x': 1
+}, {
+  'x': 3
+}], 'x');
+
+console.log(pu3);
+
+var pu4 = _.pullAllWith([{
+  'x': 1,
+  'y': 2
+}, {
+  'x': 3,
+  'y': 4
+}, {
+  'x': 5,
+  'y': 6
+}], [{
+  'x': 3,
+  'y': 4
+}], _.isEqual);
+
+console.log(pu4);
+
+var pu5 = _.pullAt(['a', 'b', 'c', 'd'], [1, 3]);
+
+console.log(pu5);

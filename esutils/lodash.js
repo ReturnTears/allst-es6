@@ -136,12 +136,68 @@ console.log(fp2)
 let he = _.head([1, 2, 3])
 console.log(he)
 
+let la = _.last([1, 2, 3])
+console.log(la)
+
 let he2 = _.head([]);
 console.log(he2)
 
 let idf1 = _.indexOf([1, 2, 1, 2], 2);
 console.log(idf1);
 
+let last1 = _.lastIndexOf([1, 2, 1, 2], 2);
+console.log(last1);
+
 let idf2 = _.indexOf([1, 2, 1, 2], 2, 2);
 console.log(idf2);
 
+let last2 = _.lastIndexOf([1, 2, 1, 2], 2, 2);
+console.log(last2);
+
+
+let ini1 = _.initial([1, 2, 3, 4, 5])
+console.log(ini1);
+
+let int1 = _.intersection([1, 2], [2, 3])
+console.log(int1);
+
+let int2 = _.intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor);
+console.log(int2);
+
+let int3 = _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+console.log(int3);
+
+var objs = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
+
+var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+ 
+let int4 = _.intersectionWith(objs, others, _.isEqual);
+console.log(int4);
+
+let jo1 = [1, 2, 3, 4].join('|')
+console.log(jo1)
+
+let jo2 = _.join([1, 2, 3, 4], '~')
+console.log(jo2);
+
+let nth1 = _.nth(['a', 'b', 'c', 'd'], 1);
+console.log(nth1);
+
+let nth2 = _.nth(['a', 'b', 'c', 'd'], -2);
+console.log(nth2);
+
+let pu1 = _.pull(['a', 'b', 'c', 'd'], 'a', 'c')
+console.log(pu1);
+
+let pu2 = _.pullAll(['a', 'b', 'c', 'd', 'a', 'c'], ['a', 'c'])
+console.log(pu2);
+
+let pu3 = _.pullAllBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 3 }, { 'x': 1 }], [{ 'x': 1 }, { 'x': 3 }], 'x');
+console.log(pu3);
+
+let pu4 = _.pullAllWith([{ 'x': 1, 'y': 2 }, { 'x': 3 , 'y': 4 },  { 'x': 5 , 'y': 6 }]
+        , [ { 'x': 3 , 'y': 4 }], _.isEqual);
+console.log(pu4);
+
+let pu5 = _.pullAt(['a', 'b', 'c', 'd'], [1, 3]);
+console.log(pu5);
