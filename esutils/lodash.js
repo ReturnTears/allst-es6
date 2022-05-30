@@ -237,4 +237,12 @@ let bind3 = bound2('hi')
 console.log(bind3)
 
 
+// Lang
+var objs = [{ 'a': 1 }, { 'b': 2 }];
+var shallow = _.clone(objs);
+console.log(shallow);
+console.log(shallow[0] === objs[0]);
+let deep = _.cloneDeep(objs);
+console.log(deep);
+console.log(deep[0] === objs[0]);
 
