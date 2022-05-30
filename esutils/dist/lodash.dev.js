@@ -303,4 +303,54 @@ console.log(pu4);
 
 var pu5 = _.pullAt(['a', 'b', 'c', 'd'], [1, 3]);
 
-console.log(pu5);
+console.log(pu5); // Function
+
+function asyncSave(_ref) {
+  var type = _ref.type,
+      complete = _ref.complete;
+  console.log(type);
+}
+
+var saves = ['profile', 'settings'];
+
+var done = _.after(saves.length, function () {
+  console.log('done saving');
+});
+
+_.forEach(saves, function (save) {
+  asyncSave({
+    'type': save,
+    'complete': done
+  });
+});
+
+var finished = function finished() {
+  console.log('Holy sh*t I finished it');
+};
+
+var code = _.after(3, finished);
+
+code(); // ...
+
+code(); // ...
+
+code();
+
+var greet = function greet(greeting, punctuation) {
+  // console.log(greeting, this, punctuation)
+  return greeting + ' ' + this.user + punctuation;
+};
+
+var object = {
+  'user': 'fred'
+};
+
+var bound = _.bind(greet, object, 'hi');
+
+var bind2 = bound('!');
+console.log(bind2);
+
+var bound2 = _.bind(greet, object, _, '!');
+
+var bind3 = bound2('hi');
+console.log(bind3);

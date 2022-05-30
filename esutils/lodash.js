@@ -201,3 +201,40 @@ console.log(pu4);
 
 let pu5 = _.pullAt(['a', 'b', 'c', 'd'], [1, 3]);
 console.log(pu5);
+
+
+// Function
+function asyncSave({type, complete}) {
+    console.log(type)
+}
+let saves = ['profile', 'settings']
+var done = _.after(saves.length, function () {
+    console.log('done saving');
+})
+_.forEach(saves, function (save) {
+    asyncSave({ 'type': save, 'complete': done });
+})
+
+var finished = () => {
+    console.log('Holy sh*t I finished it')
+}
+var code = _.after(3, finished)
+code() // ...
+code() // ...
+code()
+
+var greet = function(greeting, punctuation) {
+    // console.log(greeting, this, punctuation)
+    return greeting + ' ' + this.user + punctuation;
+};
+var object = { 'user': 'fred' };   
+var bound = _.bind(greet, object, 'hi');
+let bind2 = bound('!');
+console.log(bind2)
+
+let bound2 = _.bind(greet, object, _, '!');
+let bind3 = bound2('hi')
+console.log(bind3)
+
+
+
