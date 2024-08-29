@@ -8,6 +8,6 @@
     "ramda": "^0.27.1"
   },
   "devDependencies": {
-    "cypress": "^7.5.0"
+    "cypress": "^13.14.0"
   }
 }
